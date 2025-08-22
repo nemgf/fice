@@ -1,129 +1,257 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Ice - Expertos en Aire Acondicionado</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* ==============================
+   Reset y fuentes
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-content">
-      <h1 class="logo">Full Ice</h1>
-      <nav class="nav">
-        <a href="#hero">Inicio</a>
-        <a href="#beneficios">Beneficios</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#casos">Casos de éxito</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-    </div>
-  </header>
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #020402;
+  background: #fafafa;
+}
 
-  <!-- Hero -->
-  <section id="hero" class="hero">
-    <div class="hero-card">
-      <h1>Climatizamos tu vida con rapidez, experiencia y confianza</h1>
-      <p>Instalación, mantenimiento y reparación de aire acondicionado en Lima, 24/7</p>
-      <div class="hero-buttons">
-        <a href="#contacto" class="btn primary">Solicita tu cotización</a>
-        <a href="https://wa.me/51999999999" class="btn success">Hablemos por WhatsApp</a>
-      </div>
-    </div>
-  </section>
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  <!-- Beneficios -->
-  <section id="beneficios" class="benefits container">
-    <div class="benefit-card">
-      <h3>🚨 Emergencias 24/7</h3>
-      <p>Atención inmediata cuando más lo necesitas</p>
-    </div>
-    <div class="benefit-card">
-      <h3>👷‍♂️ 15+ años de experiencia</h3>
-      <p>Equipo senior con trayectoria comprobada en Lima</p>
-    </div>
-    <div class="benefit-card">
-      <h3>⚡ Eficaz servicio personalizado</h3>
-      <p>Diagnóstico claro, sin rodeos y solución eficiente</p>
-    </div>
-  </section>
+/* ==============================
+   Header
+============================== */
+.header {
+  background: #235183; /* azul principal */
+  color: #fff;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  <!-- Servicios -->
-  <section id="servicios" class="services container">
-    <h2>Servicios</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <h4>Consultoría</h4>
-        <p>Asesoría experta para elegir tu sistema</p>
-      </div>
-      <div class="service-card">
-        <h4>Instalación</h4>
-        <p>Instalación profesional y garantizada</p>
-      </div>
-      <div class="service-card">
-        <h4>Mantenimiento</h4>
-        <p>Planes preventivos y correctivos</p>
-      </div>
-      <div class="service-card">
-        <h4>Reparación</h4>
-        <p>Diagnóstico y solución rápida</p>
-      </div>
-      <div class="service-card">
-        <h4>Reemplazo</h4>
-        <p>Actualización a equipos más eficientes</p>
-      </div>
-    </div>
-  </section>
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  <!-- Casos de Éxito -->
-  <section id="casos" class="cases">
-    <div class="container">
-      <h2>Nuestros Casos de Éxito</h2>
-      <div class="cases-grid">
-        <div class="case-card">
-          <h4>Le Cordon Bleu</h4>
-          <p>Confort preciso en la más prestigiosa escuela gastronómica del país</p>
-        </div>
-        <div class="case-card">
-          <h4>Woll Corp</h4>
-          <p>Climatización integral para oficinas y almacenes del grupo líder en logística</p>
-        </div>
-        <div class="case-card">
-          <h4>Bizarro Bar</h4>
-          <p>Frescura garantizada en uno de los clubes más concurridos de Lima</p>
-        </div>
-      </div>
-    </div>
-  </section>
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
 
-  <!-- Contacto -->
-  <section id="contacto" class="contact container">
-    <h2>¿Listo para empezar?</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Nombre*" required>
-      <input type="email" placeholder="Email*" required>
-      <select required>
-        <option value="">Tipo de servicio</option>
-        <option>Consultoría</option>
-        <option>Instalación</option>
-        <option>Mantenimiento</option>
-        <option>Reparación</option>
-        <option>Reemplazo</option>
-      </select>
-      <textarea placeholder="Mensaje"></textarea>
-      <button type="submit" class="btn primary">Enviar</button>
-    </form>
-  </section>
+.nav a {
+  color: #fff;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>© 2025 Full Ice - Todos los derechos reservados.</p>
-    </div>
-  </footer>
+.nav a:hover {
+  text-decoration: underline;
+}
 
-</body>
-</html>
+/* ==============================
+   Hero
+============================== */
+.hero {
+  background: url('assets/hero.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-card {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.hero-buttons .btn {
+  padding: 15px;
+  font-weight: 700;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+.btn.primary {
+  background: #5C8AC6;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #3f6daa;
+}
+
+.btn.success {
+  background: #29A71A;
+  color: #fff;
+}
+
+.btn.success:hover {
+  background: #187513;
+}
+
+/* ==============================
+   Beneficios
+============================== */
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 60px auto;
+  justify-content: space-between;
+}
+
+.benefit-card {
+  flex: 1;
+  min-width: 250px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.benefit-card h3 {
+  margin-bottom: 10px;
+  color: #235183;
+}
+
+/* ==============================
+   Servicios
+============================== */
+.services {
+  margin: 60px auto;
+  text-align: center;
+}
+
+.services h2 {
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #235183;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ==============================
+   Casos de Éxito
+============================== */
+.cases {
+  background: #235183;
+  color: #fff;
+  padding: 60px 20px;
+}
+
+.cases h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.case-card {
+  background: #fff;
+  color: #020402;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* ==============================
+   Contacto
+============================== */
+.contact {
+  margin: 60px auto;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.contact-form button {
+  padding: 15px;
+  border: none;
+  border-radius: 6px;
+  background: #235183;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #14314f;
+}
+
+/* ==============================
+   Footer
+============================== */
+.footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: 60px;
+}
