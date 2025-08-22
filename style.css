@@ -1,124 +1,129 @@
-/* ====== Reset básico ====== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Ice - Expertos en Aire Acondicionado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-body {
-  font-family: 'Roboto', sans-serif;
-  color: #141414;
-  background: #fff;
-  line-height: 1.5;
-}
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <h1 class="logo">Full Ice</h1>
+      <nav class="nav">
+        <a href="#hero">Inicio</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#casos">Casos de éxito</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-/* ====== Header ====== */
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-card">
+      <h1>Climatizamos tu vida con rapidez, experiencia y confianza</h1>
+      <p>Instalación, mantenimiento y reparación de aire acondicionado en Lima, 24/7</p>
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn primary">Solicita tu cotización</a>
+        <a href="https://wa.me/51999999999" class="btn success">Hablemos por WhatsApp</a>
+      </div>
+    </div>
+  </section>
 
-.site-header .logo {
-  font-size: 22px;
-  font-weight: 700;
-  color: #235183; /* azul principal */
-}
+  <!-- Beneficios -->
+  <section id="beneficios" class="benefits container">
+    <div class="benefit-card">
+      <h3>🚨 Emergencias 24/7</h3>
+      <p>Atención inmediata cuando más lo necesitas</p>
+    </div>
+    <div class="benefit-card">
+      <h3>👷‍♂️ 15+ años de experiencia</h3>
+      <p>Equipo senior con trayectoria comprobada en Lima</p>
+    </div>
+    <div class="benefit-card">
+      <h3>⚡ Eficaz servicio personalizado</h3>
+      <p>Diagnóstico claro, sin rodeos y solución eficiente</p>
+    </div>
+  </section>
 
-.site-header .menu a {
-  margin-left: 20px;
-  text-decoration: none;
-  font-weight: 600;
-  color: #333;
-  transition: color 0.2s;
-}
+  <!-- Servicios -->
+  <section id="servicios" class="services container">
+    <h2>Servicios</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h4>Consultoría</h4>
+        <p>Asesoría experta para elegir tu sistema</p>
+      </div>
+      <div class="service-card">
+        <h4>Instalación</h4>
+        <p>Instalación profesional y garantizada</p>
+      </div>
+      <div class="service-card">
+        <h4>Mantenimiento</h4>
+        <p>Planes preventivos y correctivos</p>
+      </div>
+      <div class="service-card">
+        <h4>Reparación</h4>
+        <p>Diagnóstico y solución rápida</p>
+      </div>
+      <div class="service-card">
+        <h4>Reemplazo</h4>
+        <p>Actualización a equipos más eficientes</p>
+      </div>
+    </div>
+  </section>
 
-.site-header .menu a:hover {
-  color: #5C8AC6; /* azul claro hover */
-}
+  <!-- Casos de Éxito -->
+  <section id="casos" class="cases">
+    <div class="container">
+      <h2>Nuestros Casos de Éxito</h2>
+      <div class="cases-grid">
+        <div class="case-card">
+          <h4>Le Cordon Bleu</h4>
+          <p>Confort preciso en la más prestigiosa escuela gastronómica del país</p>
+        </div>
+        <div class="case-card">
+          <h4>Woll Corp</h4>
+          <p>Climatización integral para oficinas y almacenes del grupo líder en logística</p>
+        </div>
+        <div class="case-card">
+          <h4>Bizarro Bar</h4>
+          <p>Frescura garantizada en uno de los clubes más concurridos de Lima</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* ====== Hero ====== */
-.hero {
-  background: #235183; /* color principal */
-  color: white;
-  text-align: center;
-  padding: 100px 20px;
-}
+  <!-- Contacto -->
+  <section id="contacto" class="contact container">
+    <h2>¿Listo para empezar?</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Nombre*" required>
+      <input type="email" placeholder="Email*" required>
+      <select required>
+        <option value="">Tipo de servicio</option>
+        <option>Consultoría</option>
+        <option>Instalación</option>
+        <option>Mantenimiento</option>
+        <option>Reparación</option>
+        <option>Reemplazo</option>
+      </select>
+      <textarea placeholder="Mensaje"></textarea>
+      <button type="submit" class="btn primary">Enviar</button>
+    </form>
+  </section>
 
-.hero h1 {
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 48px;
-  margin-bottom: 20px;
-}
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2025 Full Ice - Todos los derechos reservados.</p>
+    </div>
+  </footer>
 
-.hero p {
-  font-weight: 600;
-  font-size: 19px;
-  line-height: 24px;
-  margin-bottom: 40px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  width: 536px;
-  height: 58px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  text-decoration: none;
-  border-radius: 8px;
-  box-shadow: 0px 4.06px 4.06px rgba(0,0,0,0.5);
-  transition: transform 0.2s;
-}
-
-.btn:hover {
-  transform: scale(1.02);
-}
-
-.btn-principal {
-  background: #5C8AC6; /* azul botones */
-  color: white;
-}
-
-.btn-whatsapp {
-  background: #29A71A; /* verde whatsapp */
-  color: white;
-}
-
-/* ====== Responsive ====== */
-@media(max-width: 768px) {
-  .site-header {
-    flex-direction: column;
-    padding: 10px 20px;
-  }
-
-  .menu {
-    margin-top: 10px;
-  }
-
-  .buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 300px;
-  }
-}
+</body>
+</html>
