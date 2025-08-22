@@ -10,68 +10,119 @@
 <body>
 
   <!-- Header -->
-  <header class="site-header">
-    <div class="logo">Full Ice</div>
-    <nav class="menu">
-      <a href="#beneficios">Beneficios</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#casos">Casos de éxito</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+  <header class="header">
+    <div class="container header-content">
+      <h1 class="logo">Full Ice</h1>
+      <nav class="nav">
+        <a href="#hero">Inicio</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#casos">Casos de éxito</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
-    <h1>Climatizamos tu vida con rapidez, experiencia y confianza</h1>
-    <p>Instalación, mantenimiento y reparación de aire acondicionado en Lima, 24/7</p>
-    <div class="buttons">
-      <a href="#contacto" class="btn btn-principal">Solicita tu cotización</a>
-      <a href="https://wa.me/51999999999" class="btn btn-whatsapp">Hablemos por WhatsApp</a>
+  <section id="hero" class="hero">
+    <div class="hero-card">
+      <h1>Climatizamos tu vida con rapidez, experiencia y confianza</h1>
+      <p>Instalación, mantenimiento y reparación de aire acondicionado en Lima, 24/7</p>
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn primary">Solicita tu cotización</a>
+        <a href="https://wa.me/51999999999" class="btn success">Hablemos por WhatsApp</a>
+      </div>
     </div>
   </section>
 
   <!-- Beneficios -->
-  <section id="beneficios" class="benefits">
-    <h2>Beneficios rápidos</h2>
-    <ul>
-      <li>Atención inmediata</li>
-      <li>Más de 15 años de experiencia</li>
-      <li>Soporte 24/7</li>
-    </ul>
+  <section id="beneficios" class="benefits container">
+    <div class="benefit-card">
+      <h3>🚨 Emergencias 24/7</h3>
+      <p>Atención inmediata cuando más lo necesitas</p>
+    </div>
+    <div class="benefit-card">
+      <h3>👷‍♂️ 15+ años de experiencia</h3>
+      <p>Equipo senior con trayectoria comprobada en Lima</p>
+    </div>
+    <div class="benefit-card">
+      <h3>⚡ Eficaz servicio personalizado</h3>
+      <p>Diagnóstico claro, sin rodeos y solución eficiente</p>
+    </div>
   </section>
 
   <!-- Servicios -->
-  <section id="servicios" class="services">
-    <h2>Servicios principales</h2>
+  <section id="servicios" class="services container">
+    <h2>Servicios</h2>
     <div class="services-grid">
-      <div class="service-card">Cotización</div>
-      <div class="service-card">Instalación</div>
-      <div class="service-card">Mantenimiento</div>
-      <div class="service-card">Reparación</div>
-      <div class="service-card">Reemplazo</div>
+      <div class="service-card">
+        <h4>Consultoría</h4>
+        <p>Asesoría experta para elegir tu sistema</p>
+      </div>
+      <div class="service-card">
+        <h4>Instalación</h4>
+        <p>Instalación profesional y garantizada</p>
+      </div>
+      <div class="service-card">
+        <h4>Mantenimiento</h4>
+        <p>Planes preventivos y correctivos</p>
+      </div>
+      <div class="service-card">
+        <h4>Reparación</h4>
+        <p>Diagnóstico y solución rápida</p>
+      </div>
+      <div class="service-card">
+        <h4>Reemplazo</h4>
+        <p>Actualización a equipos más eficientes</p>
+      </div>
     </div>
   </section>
 
   <!-- Casos de Éxito -->
   <section id="casos" class="cases">
-    <h2>Casos de éxito</h2>
-    <p>Proyectos realizados para empresas y hogares en Lima.</p>
+    <div class="container">
+      <h2>Nuestros Casos de Éxito</h2>
+      <div class="cases-grid">
+        <div class="case-card">
+          <h4>Le Cordon Bleu</h4>
+          <p>Confort preciso en la más prestigiosa escuela gastronómica del país</p>
+        </div>
+        <div class="case-card">
+          <h4>Woll Corp</h4>
+          <p>Climatización integral para oficinas y almacenes del grupo líder en logística</p>
+        </div>
+        <div class="case-card">
+          <h4>Bizarro Bar</h4>
+          <p>Frescura garantizada en uno de los clubes más concurridos de Lima</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Contacto -->
-  <section id="contacto" class="contact">
-    <h2>Contacto</h2>
-    <form>
-      <input type="text" placeholder="Tu nombre" required>
-      <input type="email" placeholder="Tu correo" required>
-      <textarea placeholder="Tu mensaje" required></textarea>
-      <button type="submit">Enviar</button>
+  <section id="contacto" class="contact container">
+    <h2>¿Listo para empezar?</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Nombre*" required>
+      <input type="email" placeholder="Email*" required>
+      <select required>
+        <option value="">Tipo de servicio</option>
+        <option>Consultoría</option>
+        <option>Instalación</option>
+        <option>Mantenimiento</option>
+        <option>Reparación</option>
+        <option>Reemplazo</option>
+      </select>
+      <textarea placeholder="Mensaje"></textarea>
+      <button type="submit" class="btn primary">Enviar</button>
     </form>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>© 2025 Full Ice - Todos los derechos reservados.</p>
+    <div class="container footer-content">
+      <p>© 2025 Full Ice - Todos los derechos reservados.</p>
+    </div>
   </footer>
 
 </body>
