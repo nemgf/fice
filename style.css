@@ -1,53 +1,124 @@
-body {
-  font-family: Arial, sans-serif;
+/* ====== Reset básico ====== */
+* {
   margin: 0;
   padding: 0;
-  line-height: 1.6;
+  box-sizing: border-box;
 }
 
-header.hero {
-  background: #1A85B8;
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #141414;
+  background: #fff;
+  line-height: 1.5;
+}
+
+/* ====== Header ====== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-header .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #235183; /* azul principal */
+}
+
+.site-header .menu a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.site-header .menu a:hover {
+  color: #5C8AC6; /* azul claro hover */
+}
+
+/* ====== Hero ====== */
+.hero {
+  background: #235183; /* color principal */
   color: white;
   text-align: center;
-  padding: 60px 20px;
+  padding: 100px 20px;
 }
 
-section {
-  padding: 40px 20px;
+.hero h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  margin-bottom: 20px;
 }
 
-h2 {
-  color: #1A85B8;
+.hero p {
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 24px;
+  margin-bottom: 40px;
 }
 
-.cards {
+.buttons {
   display: flex;
+  justify-content: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
-.card {
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 10px;
-  flex: 1;
-  text-align: center;
-}
-
-form {
+.btn {
+  width: 536px;
+  height: 58px;
   display: flex;
-  flex-direction: column;
-  max-width: 400px;
-  margin: auto;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  box-shadow: 0px 4.06px 4.06px rgba(0,0,0,0.5);
+  transition: transform 0.2s;
 }
 
-form input, form textarea, form button {
-  margin: 10px 0;
-  padding: 10px;
+.btn:hover {
+  transform: scale(1.02);
 }
 
-footer {
-  text-align: center;
-  background: #333;
+.btn-principal {
+  background: #5C8AC6; /* azul botones */
   color: white;
-  padding: 20px;
+}
+
+.btn-whatsapp {
+  background: #29A71A; /* verde whatsapp */
+  color: white;
+}
+
+/* ====== Responsive ====== */
+@media(max-width: 768px) {
+  .site-header {
+    flex-direction: column;
+    padding: 10px 20px;
+  }
+
+  .menu {
+    margin-top: 10px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
 }
