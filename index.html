@@ -1,28 +1,58 @@
-/* Reset básico */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Full Ice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Climatizamos tu vida con rapidez, experiencia y confianza</h1>
+    <p>Instalación, mantenimiento y reparación de aire acondicionado en Lima</p>
+  </header>
 
-/* Hero */
-.hero {
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("hero.jpg") center/cover no-repeat;
-  color: #fff; text-align: center; padding: 80px 20px;
-}
-.hero h1 { font-size: 2rem; margin-bottom: 10px; }
-.hero p { margin-bottom: 20px; }
-.btn { background: #1A85B8; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+  <!-- Beneficios -->
+  <section class="beneficios">
+    <h2>Beneficios rápidos</h2>
+    <ul>
+      <li>Atención inmediata</li>
+      <li>Más de 40 años de experiencia</li>
+      <li>Soporte 24/7</li>
+    </ul>
+  </section>
 
-/* Secciones */
-section { padding: 60px 20px; text-align: center; }
-h2 { font-size: 1.8rem; margin-bottom: 20px; }
+  <!-- Servicios -->
+  <section class="servicios">
+    <h2>Servicios principales</h2>
+    <div class="cards">
+      <div class="card">Instalación</div>
+      <div class="card">Mantenimiento</div>
+      <div class="card">Reparación</div>
+    </div>
+  </section>
 
-/* Grid */
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-.card { background: #f5f5f5; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  <!-- Casos de éxito -->
+  <section class="casos">
+    <h2>Casos de éxito</h2>
+    <p>Proyectos realizados para empresas y hogares en Lima.</p>
+  </section>
 
-/* Formulario */
-form { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
-input, textarea, button { padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc; }
-button { background: #1A85B8; color: #fff; cursor: pointer; }
+  <!-- Contacto -->
+  <section class="contacto">
+    <h2>Contacto</h2>
+    <form>
+      <input type="text" placeholder="Tu nombre" required>
+      <input type="email" placeholder="Tu correo" required>
+      <textarea placeholder="Tu mensaje"></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
 
-/* Footer */
-.footer { background: #111; color: #fff; padding: 20px; text-align: center; }
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Full Ice - Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
