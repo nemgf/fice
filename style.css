@@ -292,17 +292,69 @@ body {
 
 .cases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Móvil */
+@media (max-width: 640px) {
+  .cases-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .case-card {
   background: #fff;
   color: #020402;
-  padding: 20px;
   border-radius: 8px;
-  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
+
+.case-card img {
+  width: 100%;
+  display: block;
+}
+
+.case-body {
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.case-card h4 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #020402;
+}
+
+.case-card p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #616161;
+  flex-grow: 1;
+}
+
+.case-link {
+  font-size: 14px;
+  line-height: 18px;
+  color: #235183;
+  text-decoration: none;
+}
+
 
 /* ==============================
    Contacto
