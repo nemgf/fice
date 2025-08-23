@@ -171,6 +171,10 @@ body {
 /* ==============================
    Servicios
 ============================== */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .services {
   margin: 60px auto;
   text-align: center;
@@ -182,26 +186,26 @@ body {
   color: #235183;
 }
 
+/* --- cuadrícula: 3 arriba / 2 abajo --- */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Móvil */
 @media (max-width: 640px) {
   .services-grid {
     grid-template-columns: 1fr;
   }
 }
 
+/* --- tarjeta --- */
 .service-card {
   background: #fff;
   border-radius: 8px;
@@ -217,7 +221,7 @@ body {
 }
 
 .service-body {
-  padding: 15px 20px 20px;
+  padding: 16px 20px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -227,41 +231,51 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .service-header h4 {
- a  margin: 0;
-  font-size: 18px;
-  color: #235183;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #020402;
+  margin: 0;
   display: flex;
   align-items: center;
 }
 
 .service-icon {
-  margin-right: 8px;
+  margin-right: 6px;
 }
 
 .service-btn {
-  background: #5C8AC6;
-  color: #fff;
+  width: 122px;
+  height: 40px;
+  background: #235183;
+  color: #FAFAFA;
   border: none;
-  padding: 6px 10px;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .service-card p {
-  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #616161;
+  margin: 0 0 12px;
   flex-grow: 1;
 }
 
 .service-link {
+  font-size: 14px;
+  line-height: 18px;
   color: #235183;
   text-decoration: none;
-  font-weight: 500;
 }
+
 /* ==============================
    Casos de Éxito
 ============================== */
