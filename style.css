@@ -184,7 +184,7 @@ body {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
@@ -211,19 +211,38 @@ body {
   flex-direction: column;
 }
 
-.service-image {
-  position: relative;
-}
-
-.service-image img {
+.service-card img {
   width: 100%;
   display: block;
 }
 
+.service-body {
+  padding: 15px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.service-header h4 {
+ a  margin: 0;
+  font-size: 18px;
+  color: #235183;
+  display: flex;
+  align-items: center;
+}
+
+.service-icon {
+  margin-right: 8px;
+}
+
 .service-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   background: #5C8AC6;
   color: #fff;
   border: none;
@@ -233,23 +252,16 @@ body {
   cursor: pointer;
 }
 
-.service-card h4 {
-  margin: 15px 20px 5px;
-  color: #235183;
-}
-
 .service-card p {
-  margin: 0 20px 10px;
+  margin: 0 0 10px;
   flex-grow: 1;
 }
 
 .service-link {
-  margin: 0 20px 20px;
   color: #235183;
   text-decoration: none;
   font-weight: 500;
 }
-
 /* ==============================
    Casos de Éxito
 ============================== */
