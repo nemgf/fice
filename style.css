@@ -79,16 +79,17 @@ body {
   margin: 0 auto;
 }
 
-.hero h1 {
+.hero-title {
   font-size: 32px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 48px;
   margin-bottom: 20px;
 }
 
-.hero p {
+.hero-subtitle {
   font-size: 19px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 24px;
   margin-bottom: 30px;
 }
 
@@ -96,33 +97,45 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
 }
 
-.hero-buttons .btn {
-  padding: 15px;
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
   font-weight: 700;
   border-radius: 8px;
   text-align: center;
   text-decoration: none;
   transition: background 0.3s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
 }
 
-.btn.primary {
+.hero-btn {
+  width: 536px;
+  height: 58px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+.hero-btn.primary {
   background: #5C8AC6;
   color: #fff;
+  box-shadow: 0px 4.06px 4.06px rgba(0,0,0,0.5);
 }
 
-.btn.primary:hover {
+.hero-btn.primary:hover {
   background: #3f6daa;
 }
 
-.btn.success {
+.hero-btn.whatsapp {
   background: #29A71A;
   color: #fff;
 }
 
-.btn.success:hover {
+.hero-btn.whatsapp:hover {
   background: #187513;
 }
 
