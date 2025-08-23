@@ -361,15 +361,69 @@ body {
 ============================== */
 .contact {
   margin: 60px auto;
+}
+
+.contact-card {
+  background: #cde0f8;            /* color de la tarjeta */
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-card h2 {
   text-align: center;
+  margin-bottom: 8px;
+  color: #020402;
+}
+
+.contact-card p {
+  text-align: center;
+  color: #616161;
+  margin-bottom: 24px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 500px;
-  margin: 0 auto;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #020402;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid #a8c2e4;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+/* color del placeholder “Tipo de servicio” */
+.service-select {
+  color: #616161;
+}
+.service-select:focus,
+.service-select option {
+  color: #020402;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #235183;
+  color: #fafafa;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .contact-form input,
