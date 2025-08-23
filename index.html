@@ -160,25 +160,40 @@
   </div>
 </section>
 
-
   <!-- Contacto -->
-  <section id="contacto" class="contact container">
+<section id="contacto" class="contact container">
+  <div class="contact-card">
     <h2>¿Listo para empezar?</h2>
+    <p>Cuéntanos tu necesidad y te daremos una solución a medida</p>
+
     <form class="contact-form">
-      <input type="text" placeholder="Nombre*" required>
-      <input type="email" placeholder="Email*" required>
-      <select required>
-        <option value="">Tipo de servicio</option>
-        <option>Consultoría</option>
-        <option>Instalación</option>
-        <option>Mantenimiento</option>
-        <option>Reparación</option>
-        <option>Reemplazo</option>
-      </select>
-      <textarea placeholder="Mensaje"></textarea>
+      <label>Nombre*
+        <input type="text" placeholder="Escribe tu nombre" required>
+      </label>
+
+      <label>Email*
+        <input type="email" placeholder="Escribe tu email" required>
+      </label>
+
+      <label>Tipo de servicio
+        <select class="service-select" required>
+          <option value="" disabled selected>Selecciona</option>
+          <option>Consultoría</option>
+          <option>Instalación</option>
+          <option>Mantenimiento</option>
+          <option>Reparación</option>
+          <option>Reemplazo</option>
+        </select>
+      </label>
+
+      <label>Mensaje
+        <textarea placeholder="Hola, cuéntanos qué necesitas"></textarea>
+      </label>
+
       <button type="submit" class="btn primary">Enviar</button>
     </form>
-  </section>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="footer">
