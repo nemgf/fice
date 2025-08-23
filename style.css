@@ -143,10 +143,14 @@ body {
    Beneficios
 ============================== */
 .benefits {
+  background: #E0EAF4;
+  padding: 60px 0;
+}
+
+.benefits-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  margin: 60px auto;
   justify-content: space-between;
 }
 
