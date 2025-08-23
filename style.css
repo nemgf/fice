@@ -58,7 +58,7 @@ body {
    Hero
 ============================== */
 .hero {
-  background: url('assets/hero.jpg') center/cover no-repeat;
+  background: url('assets/imagenhero.webp') center/cover no-repeat;
   color: #fff;
   text-align: center;
   padding: 120px 20px;
