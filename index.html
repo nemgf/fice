@@ -166,17 +166,18 @@
     <h2>¿Listo para empezar?</h2>
     <p>Cuéntanos tu necesidad y te daremos una solución a medida</p>
 
-    <form class="contact-form">
-      <label>Nombre*
-        <input type="text" placeholder="Escribe tu nombre" required>
+    <h3 class="form-title">Contacto</h3>
+    <form class="contact-form" action="#" method="post">
+      <label for="name">Nombre*
+        <input id="name" name="name" type="text" placeholder="Escribe tu nombre" required>
       </label>
 
-      <label>Email*
-        <input type="email" placeholder="Escribe tu email" required>
+      <label for="email">Email*
+        <input id="email" name="email" type="email" placeholder="Escribe tu email" required>
       </label>
 
-      <label>Tipo de servicio
-        <select class="service-select" required>
+      <label for="service">Tipo de servicio
+        <select id="service" name="service" class="service-select" required>
           <option value="" disabled selected>Selecciona</option>
           <option>Consultoría</option>
           <option>Instalación</option>
@@ -186,14 +187,15 @@
         </select>
       </label>
 
-      <label>Mensaje
-        <textarea placeholder="Hola, cuéntanos qué necesitas"></textarea>
+      <label for="message">Mensaje
+        <textarea id="message" name="message" placeholder="Hola, cuéntanos qué necesitas"></textarea>
       </label>
 
       <button type="submit" class="btn primary">Enviar</button>
     </form>
   </div>
 </section>
+
 
   <!-- Footer -->
   <footer class="footer">
