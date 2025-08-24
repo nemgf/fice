@@ -63,80 +63,24 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 20px;
+  justify-content: flex-end; /* coloca la tarjeta a la derecha */
+  text-align: right;
+  padding: 0 40px;           /* margen interno para separarlo del borde */
   min-height: 100vh;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
 }
 
 .hero-card {
   position: relative;
   z-index: 2;
   max-width: 700px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 48px;
-  margin-bottom: 20px;
-}
-
-.hero-subtitle {
-  font-size: 19px;
-  font-weight: 600;
-  line-height: 24px;
-  margin-bottom: 30px;
+  margin: 0 0 0 auto;        /* elimina el centrado automático */
 }
 
 .hero-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: center;
-}
-
-/* Hero buttons */
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  border-radius: 8px;
-  text-align: center;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.hero-btn {
-  width: 536px;
-  height: 58px;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0;
-}
-
-.hero-btn.primary {
-  background: #5C8AC6;
-  color: #fff;
-  box-shadow: 0px 4.06px 4.06px rgba(0, 0, 0, 0.5);
-}
-.hero-btn.primary:hover { background: #3f6daa; }
-
-.hero-btn.whatsapp {
-  background: #29A71A;
-  color: #fff;
-}
-.hero-btn.whatsapp:hover { background: #187513;
+  align-items: flex-end;     /* botones alineados a la derecha */
 }
 
 /* ==============================
