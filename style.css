@@ -447,10 +447,88 @@ body {
 /* ==============================
    Footer
 ============================== */
-.footer {
-  background: #333;
-  color: #fff;
+.site-footer {
+  background-color: #143047;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #BFBFBF;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 40px 60px;
+}
+
+.footer-left {
+  flex: 1 1 300px;
+  max-width: 500px;
+  margin-right: 40px;
+}
+
+.footer-logo {
+  width: 160px;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.footer-left p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex: 1 1 300px;
+  justify-content: space-around;
+}
+
+.links-column,
+.contact-column {
+  min-width: 150px;
+}
+
+.footer-links h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  margin: 0 0 16px;
+}
+
+.links-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-column li {
+  margin-bottom: 8px;
+}
+
+.links-column a {
+  color: #BFBFBF;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.contact-column p,
+.contact-column a {
+  margin: 0 0 8px;
+  color: #BFBFBF;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.footer-bottom {
   text-align: center;
-  padding: 20px 10px;
-  margin-top: 60px;
+  padding: 20px 0;
+  border-top: 1px solid #1F4E6B;
+  font-size: 14px;
+  line-height: 24px;
+  color: #BFBFBF;
 }
