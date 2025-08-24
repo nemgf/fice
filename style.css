@@ -60,9 +60,13 @@ body {
 .hero {
   background: url('assets/imagenhero.webp') center/cover no-repeat;
   color: #fff;
-  text-align: center;
-  padding: 120px 20px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  min-height: 100vh;
 }
 
 .hero::after {
@@ -100,6 +104,7 @@ body {
   align-items: center;
 }
 
+/* Hero buttons */
 .btn {
   display: flex;
   align-items: center;
@@ -123,20 +128,15 @@ body {
 .hero-btn.primary {
   background: #5C8AC6;
   color: #fff;
-  box-shadow: 0px 4.06px 4.06px rgba(0,0,0,0.5);
+  box-shadow: 0px 4.06px 4.06px rgba(0, 0, 0, 0.5);
 }
-
-.hero-btn.primary:hover {
-  background: #3f6daa;
-}
+.hero-btn.primary:hover { background: #3f6daa; }
 
 .hero-btn.whatsapp {
   background: #29A71A;
   color: #fff;
 }
-
-.hero-btn.whatsapp:hover {
-  background: #187513;
+.hero-btn.whatsapp:hover { background: #187513;
 }
 
 /* ==============================
