@@ -24,7 +24,7 @@ body {
    Header
 ============================== */
 .header {
-  background: #235183; /* azul principal */
+  background: #235183;
   color: #fff;
   padding: 15px 0;
   position: sticky;
@@ -171,10 +171,6 @@ body {
 /* ==============================
    Servicios
 ============================== */
-body {
-  font-family: 'Roboto', sans-serif;
-}
-
 .services {
   margin: 60px auto;
   text-align: center;
@@ -186,7 +182,6 @@ body {
   color: #235183;
 }
 
-/* --- cuadrícula: 3 arriba / 2 abajo --- */
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -194,18 +189,12 @@ body {
 }
 
 @media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
 @media (max-width: 640px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+  .services-grid { grid-template-columns: 1fr; }
 }
 
-/* --- tarjeta --- */
 .service-card {
   background: #fff;
   border-radius: 8px;
@@ -244,9 +233,7 @@ body {
   align-items: center;
 }
 
-.service-icon {
-  margin-right: 6px;
-}
+.service-icon { margin-right: 6px; }
 
 .service-btn {
   width: 122px;
@@ -296,18 +283,11 @@ body {
   gap: 20px;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
-  .cases-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* Móvil */
 @media (max-width: 640px) {
-  .cases-grid {
-    grid-template-columns: 1fr;
-  }
+  .cases-grid { grid-template-columns: 1fr; }
 }
 
 .case-card {
@@ -320,15 +300,11 @@ body {
   flex-direction: column;
 }
 
-.case-card img {
-  width: 100%;
-  display: block;
-}
+.case-card img { width: 100%; display: block; }
 
 .case-body {
   padding: 16px 20px 20px;
-  display: flex;
-  flex-direction: column;
+  display: flex, flex-direction: column;
   flex: 1;
 }
 
@@ -358,9 +334,7 @@ body {
 /* ==============================
    Contacto
 ============================== */
-.contact {
-  margin: 60px auto;
-}
+.contact { margin: 60px auto; }
 
 .contact-card {
   background: #E0EAF4;
@@ -416,18 +390,11 @@ body {
 }
 
 .contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: #616161;
-}
+.contact-form textarea::placeholder { color: #616161; }
 
-.service-select {
-  color: #616161;
-}
-
+.service-select { color: #616161; }
 .service-select:focus,
-.service-select option {
-  color: #020402;
-}
+.service-select option { color: #020402; }
 
 .contact-form button {
   width: 100%;
@@ -440,9 +407,7 @@ body {
   cursor: pointer;
 }
 
-.contact-form button:hover {
-  background: #14314f;
-}
+.contact-form button:hover { background: #14314f; }
 
 /* ==============================
    Footer
@@ -477,6 +442,7 @@ body {
 
 .footer-left p {
   margin: 0;
+  color: #FAFAFA;
 }
 
 .footer-links {
@@ -504,9 +470,7 @@ body {
   margin: 0;
 }
 
-.links-column li {
-  margin-bottom: 8px;
-}
+.links-column li { margin-bottom: 8px; }
 
 .links-column a {
   color: #BFBFBF;
@@ -518,7 +482,7 @@ body {
 .contact-column p,
 .contact-column a {
   margin: 0 0 8px;
-  color: #BFBFBF;
+  color: #FAFAFA;
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
@@ -530,5 +494,5 @@ body {
   border-top: 1px solid #1F4E6B;
   font-size: 14px;
   line-height: 24px;
-  color: #BFBFBF;
+  color: #FAFAFA;
 }
