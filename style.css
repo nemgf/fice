@@ -63,10 +63,10 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;  /* card y botones a la derecha */
+  justify-content: center;   /* centra todo en el hero */
   padding: 0 40px;
   min-height: 100vh;
-  text-align: right;
+  text-align: center;        /* centra el texto */
 }
 
 .hero::after {
@@ -80,6 +80,9 @@ body {
 .hero-wrapper {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* centra card y botones */
 }
 
 /* Card de texto con dimensiones exactas y fondo 50% */
@@ -92,6 +95,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;         /* centra títulos dentro */
 }
 
 .hero-title {
@@ -109,11 +113,11 @@ body {
 
 /* Separación entre el card y los botones */
 .hero-buttons {
-  margin-top: 37px;           /* spacing del diseño */
+  margin-top: 37px;           
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: flex-end;
+  align-items: center;        /* centra los botones */
 }
 
 /* Botones */
@@ -135,12 +139,13 @@ body {
   line-height: 24px;
 }
 
+/* === Botón principal (ahora naranja) === */
 .hero-btn.primary {
-  background: #5C8AC6;
+  background: #F54E11; /* Naranja de tu paleta */
   color: #fff;
   box-shadow: 0px 4.06px 4.06px rgba(0, 0, 0, 0.5);
 }
-.hero-btn.primary:hover { background: #3f6daa; }
+.hero-btn.primary:hover { background: #d43d0c; }
 
 .hero-btn.whatsapp {
   background: #29A71A;
