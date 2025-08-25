@@ -419,6 +419,25 @@ body {
 .contact-form button:hover { background: #14314f; }
 
 /* ==============================
+   Consentimiento
+============================== */
+.form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 10px 0;
+  font-size: 13px;
+  color: #020402;
+  line-height: 1.5;
+}
+
+.form-consent input[type="checkbox"] {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+}
+
+/* ==============================
    Footer
 ============================== */
 .site-footer {
