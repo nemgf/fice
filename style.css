@@ -63,10 +63,10 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;  /* coloca el contenido a la derecha */
-  text-align: right;
+  justify-content: flex-end;  /* card y botones a la derecha */
   padding: 0 40px;
   min-height: 100vh;
+  text-align: right;
 }
 
 .hero::after {
@@ -76,14 +76,22 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.hero-card {
+/* contenedor para card + botones */
+.hero-wrapper {
   position: relative;
   z-index: 2;
-  max-width: 700px;
-  margin-left: auto;
-  background: rgba(0, 0, 0, 0.45);
-  padding: 40px;
+}
+
+/* Card de texto con dimensiones exactas y fondo 50% */
+.hero-card {
+  width: 536px;
+  height: 224px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 37px;              /* espaciado interno */
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-title {
@@ -97,17 +105,18 @@ body {
   font-size: 19px;
   font-weight: 600;
   line-height: 24px;
-  margin-bottom: 30px;
 }
 
+/* Separación entre el card y los botones */
 .hero-buttons {
+  margin-top: 37px;           /* spacing del diseño */
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: flex-end;
 }
 
-/* Hero buttons */
+/* Botones */
 .btn {
   display: flex;
   align-items: center;
@@ -137,8 +146,7 @@ body {
   background: #29A71A;
   color: #fff;
 }
-.hero-btn.whatsapp:hover { background: #187513;
-}
+.hero-btn.whatsapp:hover { background: #187513; }
 
 /* ==============================
    Beneficios
