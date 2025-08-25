@@ -301,7 +301,7 @@ body {
 }
 
 .cases h2 {
-  text-align: center;
+  text-align: left;   /* ahora alineado a la izquierda */
   margin-bottom: 40px;
 }
 
@@ -332,7 +332,8 @@ body {
 
 .case-body {
   padding: 16px 20px 20px;
-  display: flex, flex-direction: column;
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
