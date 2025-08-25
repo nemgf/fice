@@ -201,10 +201,11 @@ body {
 ============================== */
 .services {
   margin: 60px auto;
-  text-align: center;
+  text-align: center; /* mantiene centrado el contenido general */
 }
 
 .services h2 {
+  text-align: left;   /* alinea el título a la izquierda */
   margin-bottom: 40px;
   font-size: 28px;
   color: #235183;
