@@ -423,8 +423,8 @@ body {
 ============================== */
 .form-consent {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;   /* alinea checkbox y texto en la misma línea */
+  gap: 8px;              /* espacio entre el checkbox y el texto */
   margin: 10px 0;
   font-size: 13px;
   color: #020402;
@@ -432,7 +432,7 @@ body {
 }
 
 .form-consent input[type="checkbox"] {
-  margin-top: 3px;
+  margin: 0;             /* elimina el empuje hacia abajo */
   width: 18px;
   height: 18px;
 }
