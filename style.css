@@ -424,45 +424,37 @@ body {
 .service-select:focus,
 .service-select option { color: #020402; }
 
+/* Botón */
 .contact-form button {
   width: 100%;
   padding: 15px;
   border: none;
   border-radius: 6px;
-  background: #235183;
+  background: #F54E11;   /* color corregido */
   color: #fff;
   font-weight: 700;
   cursor: pointer;
 }
 
-.contact-form button:hover { background: #14314f; }
+.contact-form button:hover { background: #FF835C; }
 
 /* ==============================
    Consentimiento
 ============================== */
 .form-consent {
-  display: flex;            /* checkbox + texto en la misma línea */
-  align-items: center;      /* centrados verticalmente */
-  gap: 8px;                 /* separación entre checkbox y texto */
-  margin: 10px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  font-size: 13px;
+  color: #020402;
+  line-height: 1.5;
 }
 
 .form-consent input[type="checkbox"] {
-  flex: 0 0 auto;
+  margin: 0;
   width: 18px;
   height: 18px;
-  margin: 0;                /* sin empuje hacia abajo */
-}
-
-/* Más específico para que NO herede el "flex column" de .contact-form label */
-.contact-form .form-consent label {
-  display: inline-flex;     /* texto y asterisco en la misma línea */
-  align-items: center;
-  gap: 4px;                 /* espacio entre texto y asterisco */
-  margin: 0;
-  font-size: 13px;          /* usa 12px si prefieres */
-  line-height: 1.5;
-  color: #020402;
 }
 
 /* Asterisco visual */
