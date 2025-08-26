@@ -201,11 +201,10 @@ body {
 ============================== */
 .services {
   margin: 60px auto;
-  text-align: center; /* mantiene centrado el contenido general */
 }
 
 .services h2 {
-  text-align: left;   /* alinea el título a la izquierda */
+  text-align: left;   /* título alineado a la izquierda */
   margin-bottom: 40px;
   font-size: 28px;
   color: #235183;
@@ -227,15 +226,22 @@ body {
 .service-card {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra más marcada para doble card */
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .service-card img {
   width: 100%;
   display: block;
+  border-bottom: 1px solid #eee; /* separador sutil entre imagen y card */
 }
 
 .service-body {
@@ -243,6 +249,8 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  background: #fff;
+  border-radius: 0 0 8px 8px; /* redondeo solo abajo */
 }
 
 .service-header {
@@ -277,6 +285,10 @@ body {
   cursor: pointer;
 }
 
+.service-btn:hover {
+  background: #14314f;
+}
+
 .service-card p {
   font-size: 16px;
   line-height: 24px;
@@ -286,10 +298,17 @@ body {
 }
 
 .service-link {
+  display: block;
+  text-align: left;   /* alineado a la izquierda */
   font-size: 14px;
   line-height: 18px;
   color: #235183;
   text-decoration: none;
+  font-weight: 500;
+}
+
+.service-link:hover {
+  text-decoration: underline;
 }
 
 /* ==============================
