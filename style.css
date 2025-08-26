@@ -141,7 +141,7 @@ body {
 /* Botón principal (Naranja) */
 .hero-btn.primary {
   background: #F54E11; 
-  color: #fff;
+  color: #fafafa;
   box-shadow: 0px 4.06px 4.06px rgba(0, 0, 0, 0.5);
 }
 .hero-btn.primary:hover { background: #FF835C; }
@@ -173,7 +173,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 .benefit-card {
   flex: 1;
   min-width: 250px;
-  background: #fff;
+  background: #fafafa;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -212,7 +212,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 }
 
 .service-card {
-  background: #FAFAFA; /* antes #fff */
+  background: #fafafa; /* antes #fff */
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra más marcada para doble card */
   overflow: hidden;
@@ -262,8 +262,8 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 .service-btn {
   width: 122px;
   height: 40px;
-  background: #3F6DAA;  /* nuevo color */
-  color: #FAFAFA;
+  background: #3f6daa;  /* nuevo color */
+  color: #fafafa;
   border: none;
   border-radius: 4px;
   font-size: 12px;
@@ -274,7 +274,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 }
 
 .service-btn:hover {
-  background: #89ABD5;  /* hover */
+  background: #89abd5;  /* hover */
 }
 
 .service-card p {
@@ -304,7 +304,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 ============================== */
 .cases {
   background: #235183;
-  color: #fff;
+  color: #fafafa;
   padding: 60px 20px;
 }
 
@@ -391,7 +391,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 .contact { margin: 60px auto; }
 
 .contact-card {
-  background: #E0EAF4;
+  background: #e0eaf4;
   border: 1px solid #d0dced;
   padding: 40px 48px;
   border-radius: 12px;
@@ -437,7 +437,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 .contact-form select,
 .contact-form textarea {
   padding: 12px;
-  background: #fff;
+  background: #fafafa;
   border: 1px solid #a8c2e4;
   border-radius: 6px;
   font-family: inherit;
@@ -456,13 +456,13 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
   padding: 15px;
   border: none;
   border-radius: 6px;
-  background: #F54E11;   /* color corregido */
-  color: #fff;
+  background: #f54e11;   /* color corregido */
+  color: #fafafa;
   font-weight: 700;
   cursor: pointer;
 }
 
-.contact-form button:hover { background: #FF835C; }
+.contact-form button:hover { background: #ff835c; }
 
 /* ==============================
    Consentimiento
@@ -497,7 +497,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 0;
-  color: #BFBFBF;
+  color: #bfbfbf;
 }
 
 .footer-content {
@@ -522,7 +522,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 
 .footer-left p {
   margin: 0;
-  color: #FAFAFA;
+  color: #fAfAfA;
 }
 
 .footer-links {
@@ -540,7 +540,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: #FAFAFA;
+  color: #fAfAfA;
   margin: 0 0 16px;
 }
 
@@ -553,7 +553,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 .links-column li { margin-bottom: 8px; }
 
 .links-column a {
-  color: #BFBFBF;
+  color: #bfbfbf;
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
@@ -562,7 +562,7 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 .contact-column p,
 .contact-column a {
   margin: 0 0 8px;
-  color: #FAFAFA;
+  color: #fafafa;
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
@@ -571,8 +571,8 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
 .footer-bottom {
   text-align: center;
   padding: 20px 0;
-  border-top: 1px solid #1F4E6B;
+  border-top: 1px solid #1f4e6b;
   font-size: 14px;
   line-height: 24px;
-  color: #FAFAFA;
+  color: #fafafa;
 }
