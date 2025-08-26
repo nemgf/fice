@@ -325,22 +325,34 @@ body {
 }
 
 .case-card {
-  background: #fff;
+  background: #fafafa;   /* mismo ajuste que en servicios */
   color: #020402;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.case-card img { width: 100%; display: block; }
+.case-card:hover {
+  transform: translateY(-4px); /* efecto lift */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.case-card img {
+  width: 100%;
+  display: block;
+  border-bottom: 1px solid #eee; /* separador igual que en servicios */
+}
 
 .case-body {
   padding: 16px 20px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
+  background: #fafafa;
+  border-radius: 0 0 8px 8px;
 }
 
 .case-card h4 {
@@ -364,6 +376,11 @@ body {
   line-height: 18px;
   color: #235183;
   text-decoration: none;
+  font-weight: 500;
+}
+
+.case-link:hover {
+  text-decoration: underline;
 }
 
 /* ==============================
