@@ -500,7 +500,6 @@ body {
   background-color: #143047;
   font-size: 14px;
   line-height: 24px;
-  letter-spacing: 0;
   color: #bfbfbf;
 }
 
@@ -561,6 +560,12 @@ body {
   text-decoration: none;
   font-size: 16px;
   line-height: 24px;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+.links-column a:hover {
+  text-decoration: underline;
+  color: #fafafa;
 }
 
 .contact-column p,
@@ -572,6 +577,10 @@ body {
   line-height: 24px;
 }
 
+.contact-column a:hover {
+  text-decoration: underline;
+}
+
 .footer-bottom {
   text-align: center;
   padding: 20px 0;
@@ -580,3 +589,14 @@ body {
   line-height: 24px;
   color: #fafafa;
 }
+
+.footer-bottom a {
+  color: #fafafa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
