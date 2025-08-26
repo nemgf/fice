@@ -140,27 +140,25 @@ body {
 
 /* Botón principal (Naranja) */
 .hero-btn.primary {
-  background: #F54E11; 
+  background: #f54e11; 
   color: #fafafa;
   box-shadow: 0px 4.06px 4.06px rgba(0, 0, 0, 0.5);
 }
-.hero-btn.primary:hover { background: #FF835C; }
+.hero-btn.primary:hover { background: #ff835c; }
 
 /* Botón WhatsApp (Verde oscuro) */
 .hero-btn.whatsapp {
   background: #1B7513; 
   color: #fafafa;
 }
-.hero-btn.whatsapp:hover { background: #42C83B; }
-
-De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil contentarme, te doy muchas gracias Chat! Me gustaría que ahora estas 3 cards del bloque beneficios tengan el mismo lift effect que las anteriores. Hazlo por favor
+.hero-btn.whatsapp:hover { background: #42c83b; }
 
 /* ==============================
    Beneficios
 ============================== */
 .benefits {
-  background: #E0EAF4;
-  padding: 60px 0;
+  background: #b5cbe5;
+  padding: 90px 0; /* más espacio arriba y abajo */
 }
 
 .benefits-wrapper {
@@ -176,7 +174,13 @@ De verdad que te estas redimiendo de todos los errores anteriores! Es tan facil 
   background: #fafafa;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .benefit-card h3 {
