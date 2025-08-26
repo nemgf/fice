@@ -210,7 +210,7 @@ body {
 }
 
 .service-card {
-  background: #fff;
+  background: #FAFAFA; /* antes #fff */
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra más marcada para doble card */
   overflow: hidden;
@@ -235,7 +235,6 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: #fff;
   border-radius: 0 0 8px 8px; /* redondeo solo abajo */
 }
 
@@ -261,7 +260,7 @@ body {
 .service-btn {
   width: 122px;
   height: 40px;
-  background: #235183;
+  background: #3F6DAA;  /* nuevo color */
   color: #FAFAFA;
   border: none;
   border-radius: 4px;
@@ -269,10 +268,11 @@ body {
   line-height: 20px;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .service-btn:hover {
-  background: #14314f;
+  background: #89ABD5;  /* hover */
 }
 
 .service-card p {
