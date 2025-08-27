@@ -63,7 +63,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;   /* card + botones alineados a la derecha */
+  justify-content: flex-end;
   padding: 0 40px;
   min-height: 100vh;
 }
@@ -75,16 +75,14 @@ body {
   background: rgba(0, 0, 0, 0.5);
 }
 
-/* contenedor para card + botones */
 .hero-wrapper {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;   /* card y botones pegados a la derecha */
+  align-items: flex-end;
 }
 
-/* Card de texto */
 .hero-card {
   width: 536px;
   height: 224px;
@@ -94,7 +92,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;   /* centra SOLO el texto dentro del card */
+  text-align: center;
 }
 
 .hero-title {
@@ -110,13 +108,12 @@ body {
   line-height: 24px;
 }
 
-/* Botones */
 .hero-buttons {
   margin-top: 37px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: flex-end;   /* mantiene botones a la derecha */
+  align-items: flex-end;
 }
 
 .btn {
@@ -138,17 +135,15 @@ body {
   line-height: 24px;
 }
 
-/* Botón principal (Naranja) */
 .hero-btn.primary {
-  background: #f54e11; 
+  background: #f54e11;
   color: #fafafa;
-  box-shadow: 0px 4.06px 4.06px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 .hero-btn.primary:hover { background: #ff835c; }
 
-/* Botón WhatsApp (Verde oscuro) */
 .hero-btn.whatsapp {
-  background: #1B7513; 
+  background: #1B7513;
   color: #fafafa;
 }
 .hero-btn.whatsapp:hover { background: #42c83b; }
@@ -158,7 +153,7 @@ body {
 ============================== */
 .benefits {
   background: #e0eaf4;
-  padding: 90px 0; /* más espacio arriba y abajo */
+  padding: 90px 0;
 }
 
 .benefits-wrapper {
@@ -196,7 +191,7 @@ body {
 }
 
 .services h2 {
-  text-align: left;   /* título alineado a la izquierda */
+  text-align: left;
   margin-bottom: 40px;
   font-size: 28px;
   color: #235183;
@@ -208,17 +203,10 @@ body {
   gap: 20px;
 }
 
-@media (max-width: 1024px) {
-  .services-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px) {
-  .services-grid { grid-template-columns: 1fr; }
-}
-
 .service-card {
-  background: #fafafa; /* antes #fff */
+  background: #fafafa;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* sombra más marcada para doble card */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -233,7 +221,7 @@ body {
 .service-card img {
   width: 100%;
   display: block;
-  border-bottom: 1px solid #eee; /* separador sutil entre imagen y card */
+  border-bottom: 1px solid #eee;
 }
 
 .service-body {
@@ -241,7 +229,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  border-radius: 0 0 8px 8px; /* redondeo solo abajo */
+  border-radius: 0 0 8px 8px;
 }
 
 .service-header {
@@ -266,7 +254,7 @@ body {
 .service-btn {
   width: 122px;
   height: 40px;
-  background: #3f6daa;  /* nuevo color */
+  background: #3f6daa;
   color: #fafafa;
   border: none;
   border-radius: 4px;
@@ -277,9 +265,7 @@ body {
   transition: background 0.3s ease;
 }
 
-.service-btn:hover {
-  background: #89abd5;  /* hover */
-}
+.service-btn:hover { background: #89abd5; }
 
 .service-card p {
   font-size: 16px;
@@ -291,7 +277,7 @@ body {
 
 .service-link {
   display: block;
-  text-align: left;   /* alineado a la izquierda */
+  text-align: left;
   font-size: 14px;
   line-height: 18px;
   color: #235183;
@@ -299,9 +285,7 @@ body {
   font-weight: 500;
 }
 
-.service-link:hover {
-  text-decoration: underline;
-}
+.service-link:hover { text-decoration: underline; }
 
 /* ==============================
    Casos de Éxito
@@ -313,7 +297,7 @@ body {
 }
 
 .cases h2 {
-  text-align: left;   /* ahora alineado a la izquierda */
+  text-align: left;
   margin-bottom: 40px;
 }
 
@@ -323,15 +307,8 @@ body {
   gap: 20px;
 }
 
-@media (max-width: 1024px) {
-  .cases-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px) {
-  .cases-grid { grid-template-columns: 1fr; }
-}
-
 .case-card {
-  background: #fafafa;   /* mismo ajuste que en servicios */
+  background: #fafafa;
   color: #020402;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -342,14 +319,14 @@ body {
 }
 
 .case-card:hover {
-  transform: translateY(-4px); /* efecto lift */
+  transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .case-card img {
   width: 100%;
   display: block;
-  border-bottom: 1px solid #eee; /* separador igual que en servicios */
+  border-bottom: 1px solid #eee;
 }
 
 .case-body {
@@ -385,9 +362,7 @@ body {
   font-weight: 500;
 }
 
-.case-link:hover {
-  text-decoration: underline;
-}
+.case-link:hover { text-decoration: underline; }
 
 /* ==============================
    Contacto
@@ -454,13 +429,12 @@ body {
 .service-select:focus,
 .service-select option { color: #020402; }
 
-/* Botón */
 .contact-form button {
   width: 100%;
   padding: 15px;
   border: none;
   border-radius: 6px;
-  background: #f54e11;   /* color corregido */
+  background: #f54e11;
   color: #fafafa;
   font-weight: 700;
   cursor: pointer;
@@ -487,11 +461,7 @@ body {
   height: 18px;
 }
 
-/* Asterisco visual */
-.form-consent .asterisk {
-  color: #d00;
-  margin-left: 2px;
-}
+.form-consent .asterisk { color: #d00; margin-left: 2px; }
 
 /* ==============================
    Footer
@@ -523,10 +493,7 @@ body {
   margin-bottom: 16px;
 }
 
-.footer-left p {
-  margin: 0;
-  color: #fafafa;
-}
+.footer-left p { margin: 0; color: #fafafa; }
 
 .footer-links {
   display: flex;
@@ -535,9 +502,7 @@ body {
 }
 
 .links-column,
-.contact-column {
-  min-width: 150px;
-}
+.contact-column { min-width: 150px; }
 
 .footer-links h3 {
   font-weight: 600;
@@ -547,12 +512,7 @@ body {
   margin: 0 0 16px;
 }
 
-.links-column ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
+.links-column ul { list-style: none; padding: 0; margin: 0; }
 .links-column li { margin-bottom: 8px; }
 
 .links-column a {
@@ -577,9 +537,7 @@ body {
   line-height: 24px;
 }
 
-.contact-column a:hover {
-  text-decoration: underline;
-}
+.contact-column a:hover { text-decoration: underline; }
 
 .footer-bottom {
   text-align: center;
@@ -596,7 +554,29 @@ body {
   font-weight: 600;
 }
 
-.footer-bottom a:hover {
-  text-decoration: underline;
-}
+.footer-bottom a:hover { text-decoration: underline; }
 
+/* ==============================
+   MEDIA QUERIES RESPONSIVE
+   Tablet y Mobile: 1 sola columna
+============================== */
+@media (max-width: 1024px) {
+  .services-grid,
+  .cases-grid,
+  .benefits-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card,
+  .hero-btn {
+    width: 100% !important;
+  }
+
+  .hero-wrapper {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-buttons { align-items: center; }
+}
