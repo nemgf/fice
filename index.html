@@ -15,6 +15,8 @@
       <h1 class="logo">
         <img src="assets/logoheader.webp" alt="Full Ice">
       </h1>
+      
+      <!-- Menú normal -->
       <nav class="nav">
         <a href="#hero">Inicio</a>
         <a href="#beneficios">Beneficios</a>
@@ -22,13 +24,25 @@
         <a href="#casos">Casos de éxito</a>
         <a href="#contacto">Contacto</a>
       </nav>
+
+      <!-- Botón hamburguesa -->
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
     </div>
+
+    <!-- Menú hamburguesa -->
+    <nav class="mobile-nav">
+      <button class="menu-close" aria-label="Cerrar menú">✕</button>
+      <a href="#hero">Inicio</a>
+      <a href="#beneficios">Beneficios</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#casos">Casos de éxito</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </header>
 
  <!-- Hero -->
 <section id="hero" class="hero">
   <div class="hero-wrapper">
-    <!-- Card solo para el texto -->
     <div class="hero-card">
       <h1 class="hero-title">
         Climatizamos tu vida con rapidez, experiencia y confianza
@@ -38,11 +52,13 @@
       </h2>
     </div>
 
-    <!-- Botones fuera del card, con el mismo ancho -->
     <div class="hero-buttons">
       <a href="#contacto" class="btn hero-btn primary">Solicita tu cotización</a>
       <a href="https://wa.me/51999999999" class="btn hero-btn whatsapp">Hablemos por WhatsApp</a>
     </div>
+
+    <!-- Flecha scroll -->
+    <div class="scroll-down">⌄</div>
   </div>
 </section>
 
@@ -68,7 +84,6 @@
 <section id="servicios" class="services container">
   <h2>Servicios</h2>
   <div class="services-grid">
-
     <div class="service-card">
       <img src="assets/homeconsultoria.webp" alt="Consultoría">
       <div class="service-body">
@@ -128,7 +143,6 @@
         <a href="#" class="service-link">Leer más</a>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -196,7 +210,6 @@
         <textarea id="message" name="message" placeholder="Hola, cuéntanos qué necesitas"></textarea>
       </label>
 
-      <!-- Consentimiento -->
       <div class="form-consent">
         <input type="checkbox" id="consent" name="consent" required>
         <label for="consent">
@@ -246,6 +259,26 @@
     <a href="#hero">Full Ice</a>. Todos los derechos reservados.
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menuClose = document.querySelector('.menu-close');
+  const mobileNav = document.querySelector('.mobile-nav');
+
+  menuToggle.addEventListener('click', () => {
+    mobileNav.classList.add('open');
+  });
+
+  menuClose.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+  });
+
+  document.querySelectorAll('.mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+    });
+  });
+</script>
 
 </body>
 </html>
