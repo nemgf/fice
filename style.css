@@ -65,17 +65,17 @@ body{
   background: var(--blue-800);
   display: flex; flex-direction: column; align-items: center;
   gap: 30px;
-  padding: 80px 20px 40px; /* espacio para el botón X arriba */
+  padding: 80px 20px 40px;
   transform: translateY(-110%);
   transition: transform .35s ease-in-out;
-  z-index: 2001;                 /* sobre el header */
+  z-index: 2001;
   height: auto;
   box-shadow: 0 8px 28px rgba(0,0,0,.35);
-  visibility: hidden; /* <-- AÑADIDO: Oculta el panel completamente cuando no está activo */
+  visibility: hidden; /* <-- CORRECCIÓN CLAVE: Desactiva el panel cuando está oculto */
 }
 .nav-mobile.show{
   transform: translateY(0);
-  visibility: visible; /* <-- AÑADIDO: Hace el panel visible cuando la clase .show está presente */
+  visibility: visible; /* <-- CORRECCIÓN CLAVE: Activa el panel cuando está visible */
 }
 
 .nav-close{
