@@ -1,6 +1,3 @@
-// ==============================
-// Menú hamburguesa: slide top in/out
-// ==============================
 (() => {
   const init = () => {
     const hamburger = document.getElementById("hamburger");
@@ -8,14 +5,16 @@
     const navClose  = document.getElementById("nav-close");
     if (!hamburger || !navMobile) return;
 
-    const firstLink = navMobile.querySelector("a");
+    // MEJORA: Funciones para bloquear y desbloquear el scroll del body
+    const lockScroll = () => document.body.style.overflow = 'hidden';
+    const unlockScroll = () => document.body.style.overflow = '';
 
     const openMenu = () => {
       navMobile.classList.add("show");
       hamburger.classList.add("open");
       hamburger.setAttribute("aria-expanded", "true");
       navMobile.setAttribute("aria-hidden", "false");
-      if (firstLink) firstLink.focus({ preventScroll: true });
+      lockScroll(); // <--- Llamada a la función de bloqueo
     };
 
     const closeMenu = () => {
@@ -23,33 +22,34 @@
       hamburger.classList.remove("open");
       hamburger.setAttribute("aria-expanded", "false");
       navMobile.setAttribute("aria-hidden", "true");
+      unlockScroll(); // <--- Llamada a la función de desbloqueo
       hamburger.focus({ preventScroll: true });
     };
+    
+    // Sincronizar estado inicial al cargar la página para asegurar que esté cerrado
+    closeMenu();
 
-    // Toggle con el botón hamburguesa
     hamburger.addEventListener("click", () => {
       navMobile.classList.contains("show") ? closeMenu() : openMenu();
     });
 
-    // Botón X dentro del drawer
     if (navClose) navClose.addEventListener("click", closeMenu);
 
-    // Cerrar al hacer clic en un enlace del menú
     navMobile.querySelectorAll("a").forEach(a =>
       a.addEventListener("click", closeMenu)
     );
 
-    // Cerrar con Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && navMobile.classList.contains("show")) {
         closeMenu();
       }
     });
 
-    // Reset si pasas a desktop (>1024px)
     const BREAKPOINT = 1024;
     window.addEventListener("resize", () => {
-      if (window.innerWidth > BREAKPOINT) closeMenu();
+      if (window.innerWidth > BREAKPOINT && navMobile.classList.contains("show")) {
+        closeMenu();
+      }
     });
   };
 
