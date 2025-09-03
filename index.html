@@ -9,14 +9,12 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="header">
     <div class="container header-content">
       <h1 class="logo">
         <img src="assets/logoheader.webp" alt="Full Ice" />
       </h1>
 
-      <!-- Navegación desktop -->
       <nav class="nav" aria-label="Principal">
         <a href="#hero">Inicio</a>
         <a href="#beneficios">Beneficios</a>
@@ -25,16 +23,13 @@
         <a href="#contacto">Contacto</a>
       </nav>
 
-      <!-- Hamburguesa (tablet/móvil) -->
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="nav-mobile" aria-expanded="false">
+      <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú" aria-controls="nav-mobile" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
 
-    <!-- Panel móvil deslizable -->
-    <nav class="nav-mobile" id="nav-mobile" aria-label="Menú móvil">
-      <!-- Botón X para cerrar -->
-      <button class="nav-close" id="nav-close" aria-label="Cerrar menú">×</button>
+    <nav class="nav-mobile" id="nav-mobile" aria-label="Menú móvil" aria-hidden="true">
+      <button type="button" class="nav-close" id="nav-close" aria-label="Cerrar menú">×</button>
 
       <a href="#hero">Inicio</a>
       <a href="#beneficios">Beneficios</a>
@@ -44,7 +39,6 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section id="hero" class="hero" aria-label="Portada">
     <div class="hero-wrapper">
       <div class="hero-card">
@@ -58,7 +52,6 @@
       </div>
     </div>
 
-    <!-- Flecha scroll -->
     <a href="#beneficios" class="scroll-down" aria-label="Bajar">
       <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
         <path d="M6 9l6 6 6-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -66,7 +59,6 @@
     </a>
   </section>
 
-  <!-- Beneficios -->
   <section id="beneficios" class="benefits">
     <div class="container benefits-wrapper">
       <div class="benefit-card">
@@ -84,7 +76,6 @@
     </div>
   </section>
 
-  <!-- Servicios -->
   <section id="servicios" class="services container">
     <h2>Servicios</h2>
     <div class="services-grid">
@@ -93,7 +84,7 @@
         <div class="service-body">
           <div class="service-header">
             <h4><span class="service-icon">💡</span>Consultoría</h4>
-            <button class="service-btn">Solicitar servicio</button>
+            <button type="button" class="service-btn">Solicitar servicio</button>
           </div>
           <p>Asesoría experta para elegir tu sistema</p>
           <a href="#" class="service-link">Leer más</a>
@@ -105,7 +96,7 @@
         <div class="service-body">
           <div class="service-header">
             <h4><span class="service-icon">🔧</span>Instalación</h4>
-            <button class="service-btn">Solicitar servicio</button>
+            <button type="button" class="service-btn">Solicitar servicio</button>
           </div>
           <p>Ubicación profesional y garantizada</p>
           <a href="#" class="service-link">Leer más</a>
@@ -117,7 +108,7 @@
         <div class="service-body">
           <div class="service-header">
             <h4><span class="service-icon">🛠️</span>Mantenimiento</h4>
-            <button class="service-btn">Solicitar servicio</button>
+            <button type="button" class="service-btn">Solicitar servicio</button>
           </div>
           <p>Planes preventivos y correctivos</p>
           <a href="#" class="service-link">Leer más</a>
@@ -129,7 +120,7 @@
         <div class="service-body">
           <div class="service-header">
             <h4><span class="service-icon">🔎</span>Reparación</h4>
-            <button class="service-btn">Solicitar servicio</button>
+            <button type="button" class="service-btn">Solicitar servicio</button>
           </div>
           <p>Diagnóstico y solución rápida</p>
           <a href="#" class="service-link">Leer más</a>
@@ -141,7 +132,7 @@
         <div class="service-body">
           <div class="service-header">
             <h4><span class="service-icon">♻️</span>Reemplazo</h4>
-            <button class="service-btn">Solicitar servicio</button>
+            <button type="button" class="service-btn">Solicitar servicio</button>
           </div>
           <p>Actualización a equipos más eficientes</p>
           <a href="#" class="service-link">Leer más</a>
@@ -150,7 +141,6 @@
     </div>
   </section>
 
-  <!-- Casos de Éxito -->
   <section id="casos" class="cases">
     <div class="container">
       <h2>Nuestros Casos de Éxito</h2>
@@ -185,7 +175,6 @@
     </div>
   </section>
 
-  <!-- Contacto -->
   <section id="contacto" class="contact container">
     <div class="contact-card">
       <h2>¿Listo para empezar?</h2>
@@ -226,7 +215,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content container">
       <div class="footer-left">
@@ -264,7 +252,6 @@
     </div>
   </footer>
 
-  <!-- FAB WhatsApp -->
   <a href="https://wa.me/51999999999" class="whatsapp-fab" target="_blank" aria-label="WhatsApp" rel="noopener">
     <svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true">
       <path fill="#FAFAFA" d="M19.11 17.37c-.28-.14-1.64-.81-1.9-.9-.26-.1-.45-.14-.64.14-.18.28-.73.9-.9 1.09-.17.18-.33.21-.61.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.4-1.68-1.57-1.97-.17-.28-.02-.44.13-.59.14-.14.28-.33.42-.49.14-.16.18-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.63-1.54-.87-2.12-.23-.56-.46-.49-.64-.5h-.55c-.19 0-.49.07-.74.35-.25.28-.98 1-.98 2.44s1 2.81 1.14 2.99c.14.19 1.98 3.13 4.8 4.39.67.3 1.19.48 1.6.61.67.22 1.28.19 1.76.12.54-.08 1.64-.66 1.87-1.29.23-.64.23-1.18.16-1.29-.07-.11-.25-.18-.55-.31z"/>
@@ -272,7 +259,6 @@
     </svg>
   </a>
 
-  <!-- JS -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=1" defer></script>
 </body>
 </html>
