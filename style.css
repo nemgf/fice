@@ -29,7 +29,8 @@ body{
 /* utility: lock scroll when nav open */
 html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
 
-/* overlay debajo del nav y header: no bloquea links del drawer */
+/* overlay (injected by JS or present in DOM)
+   ↓ Debajo del header (1000) y del drawer (1100) para no oscurecer el nav */
 #nav-overlay{
   position: fixed;
   inset: 0;
@@ -108,25 +109,27 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
 /* TOP variant (tablet) - slide down full width */
 .nav-mobile.top{
   position: fixed;
-  left: 0; right: 0; top: 0;
+  left: 0;
+  right: 0;
+  top: 0;
   width: 100%;
-  height: 100vh;                 /* cubre toda la pantalla en tablet */
   max-height: 100vh;
   overflow: auto;
   transform: translateY(-110%);
   transition: transform .35s ease, opacity .35s ease;
   opacity: 1;
   border-radius: 0;
-  padding: 80px 20px 40px;       /* espacio para botón X */
+  padding: 80px 20px 40px; /* espacio para botón X */
 }
 .nav-mobile.top.show{ transform: translateY(0); }
 
-/* SIDE variant (mobile) - slide from right (ancho flexible por defecto) */
+/* SIDE variant (mobile) - slide from right */
 .nav-mobile.side{
   position: fixed;
-  top: 0; right: 0; left: auto;
+  top: 0;
+  right: 0;
   height: 100vh;
-  width: min(90vw, 340px);
+  width: min(90vw, 340px);   /* responsive width */
   max-width: 90vw;
   transform: translateX(110%);
   transition: transform .35s ease, opacity .35s ease;
@@ -134,10 +137,11 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   border-radius: 8px 0 0 8px;
   overflow: auto;
   padding-top: 56px;
+  left: auto; /* por si hereda de top */
 }
 .nav-mobile.side.show{ transform: translateX(0); }
 
-/* closing states (JS aplica .closing) */
+/* closing states */
 .nav-mobile.closing{ transition: opacity 1s ease, transform 1s ease; }
 .nav-mobile.top.closing{ opacity: 0; transform: translateY(-110%); }
 
@@ -147,18 +151,25 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   opacity: 0 !important;               /* se disuelve en 1s */
 }
 
-/* ocultar por inline style del JS */
+/* ensure display none is respected when set inline */
 .nav-mobile[style*="display: none"]{ display:none !important; }
 
-/* botón X */
+/* close button */
 .nav-close{
   position: absolute;
-  top: 12px; right: 12px;
-  width: 40px; height: 40px;
-  border: 0; border-radius: 6px;
-  background: rgba(255,255,255,.14); color: #fff;
-  font-size: 26px; line-height: 40px; text-align: center;
-  cursor: pointer; z-index: 2010;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 2010;
 }
 .nav-close:hover{ background: rgba(255,255,255,.22); }
 
