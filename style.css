@@ -29,7 +29,8 @@ body{
 /* utility: lock scroll when nav open */
 html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
 
-/* overlay (injected by JS or present in DOM) */
+/* overlay (injected by JS or present in DOM)
+   ↓ Debajo del header (1000) y del drawer (1100) para no oscurecer el nav */
 #nav-overlay{
   position: fixed;
   inset: 0;
@@ -37,7 +38,7 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   opacity: 0;
   visibility: hidden;
   transition: opacity .25s ease;
-  z-index: 1999;
+  z-index: 900;
 }
 #nav-overlay.visible { opacity: 1; visibility: visible; }
 
@@ -80,12 +81,12 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
 
 /* ==============================
    Panel móvil: top / side responsive
-   - JS must add class .top or .side and toggles .show/.closing
+   - JS añade .top o .side y alterna .show/.closing
 ============================== */
 
 /* base nav-mobile (neutral) */
 .nav-mobile{
-  z-index: 2001;
+  z-index: 1100; /* sobre overlay y header */
   box-shadow: 0 8px 28px rgba(0,0,0,.35);
   background: var(--nav-bg);
   color: var(--nav-color);
@@ -95,8 +96,6 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   gap: 30px;
   padding: 28px 20px 40px;
   box-sizing: border-box;
-  /* Keep it out of flow until shown (JS also handles inline display) */
-  /* transitions are declared in variants */
   border-radius: 8px;
   min-width: 220px;
 }
@@ -120,7 +119,7 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   transition: transform .35s ease, opacity .35s ease;
   opacity: 1;
   border-radius: 0;
-  padding: 80px 20px 40px; /* space for close button at top */
+  padding: 80px 20px 40px; /* espacio para botón X */
 }
 .nav-mobile.top.show{ transform: translateY(0); }
 
@@ -130,22 +129,27 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   top: 0;
   right: 0;
   height: 100vh;
-  width: min(90vw, 340px);   /* responsive width avoids weird stripes */
+  width: min(90vw, 340px);   /* responsive width */
   max-width: 90vw;
   transform: translateX(110%);
   transition: transform .35s ease, opacity .35s ease;
   opacity: 1;
   border-radius: 8px 0 0 8px;
-  /* ensure the contents use full height scroll if needed */
   overflow: auto;
-  padding-top: 56px; /* keep some top space for close button */
+  padding-top: 56px;
+  left: auto; /* por si hereda de top */
 }
 .nav-mobile.side.show{ transform: translateX(0); }
 
-/* closing fade/slide for link-click on mobile */
-.nav-mobile.closing{ opacity: 0; transition: opacity 1s ease, transform 1s ease; }
-.nav-mobile.side.closing{ transform: translateX(110%); }
-.nav-mobile.top.closing{ transform: translateY(-110%); }
+/* closing states */
+.nav-mobile.closing{ transition: opacity 1s ease, transform 1s ease; }
+.nav-mobile.top.closing{ opacity: 0; transform: translateY(-110%); }
+
+/* En móvil, cierre por enlace = SOLO FADE (sin deslizar) */
+.nav-mobile.side.closing{
+  transform: translateX(0) !important; /* no se mueve */
+  opacity: 0 !important;               /* se disuelve en 1s */
+}
 
 /* ensure display none is respected when set inline */
 .nav-mobile[style*="display: none"]{ display:none !important; }
