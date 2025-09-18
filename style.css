@@ -72,7 +72,7 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
 #nav-overlay{
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: transparent;
   opacity: 0;
   visibility: hidden;
   transition: opacity .25s ease;
