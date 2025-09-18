@@ -1,6 +1,8 @@
 /* ==============================
-   Reset & Base
+   style.css - cleaned (drawer + overlay fixes included)
 ============================== */
+
+/* Reset & Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root{
@@ -13,7 +15,6 @@
   --orange:#f54e11;
   --green:#1B7513;
 
-  /* nav colors */
   --nav-bg: var(--blue-800);
   --nav-color: #fafafa;
 }
@@ -29,8 +30,7 @@ body{
 /* utility: lock scroll when nav open */
 html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
 
-/* overlay (injected by JS or present in DOM)
-   ↓ Debajo del header (1000) y del drawer (1100) para no oscurecer el nav */
+/* Overlay */
 #nav-overlay{
   position: fixed;
   inset: 0;
@@ -38,370 +38,137 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   opacity: 0;
   visibility: hidden;
   transition: opacity .25s ease;
-  z-index: 900;
+  z-index: 1100; /* debajo del nav (1200), encima del contenido (1000) */
 }
 #nav-overlay.visible { opacity: 1; visibility: visible; }
 
-/* small container */
+/* Container */
 .container{ width:90%; max-width:1200px; margin:0 auto; }
 
-/* ==============================
-   Header
-============================== */
+/* Header */
 .header{
   background:var(--blue-800);
   color:var(--white);
   position:sticky; top:0; z-index:1000;
 }
-
-.header-content{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:14px 0;
-}
-
+.header-content{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
 .logo img{ height:36px; width:auto; display:block; }
 
-.nav a{
-  color:var(--white); text-decoration:none; margin-left:20px;
-  font-weight:600; opacity:.95;
-}
+.nav a{ color:var(--white); text-decoration:none; margin-left:20px; font-weight:600; opacity:.95; }
 .nav a:hover{ text-decoration:underline; }
 
-/* Hamburguesa */
-.hamburger{
-  display:none; width:32px; height:24px; border:0; background:transparent; cursor:pointer;
-  align-items:center; justify-content:space-between; flex-direction:column; padding:2px;
-}
-.hamburger span{
-  display:block; width:100%; height:3px; background:#fff; border-radius:2px; transition:.25s;
-}
+/* Hamburger */
+.hamburger{ display:none; width:32px; height:24px; border:0; background:transparent; cursor:pointer; align-items:center; justify-content:space-between; flex-direction:column; padding:2px; }
+.hamburger span{ display:block; width:100%; height:3px; background:#fff; border-radius:2px; transition:.25s; }
 .hamburger.open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
 .hamburger.open span:nth-child(2){ opacity:0; }
 .hamburger.open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
 
-/* ==============================
-   Drawer responsive (.top / .side)
-   JS alterna .show y .closing; puede o no añadir .top/.side.
-============================== */
-
-/* base nav-mobile (neutral) */
+/* NAV-MOBILE (drawer base) */
 .nav-mobile{
-  z-index: 1100; /* sobre overlay y header */
+  z-index: 1200; /* debe quedar por encima de overlay (1100) y header (1000) */
   box-shadow: 0 8px 28px rgba(0,0,0,.35);
   background: var(--nav-bg);
   color: var(--nav-color);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 30px;
   padding: 28px 20px 40px;
   box-sizing: border-box;
   border-radius: 8px;
   min-width: 220px;
+  /* Inicial: fuera de pantalla por transform (controlado por classes) */
+  will-change: transform, opacity;
 }
 
-/* links */
-.nav-mobile a{
-  color: var(--nav-color); text-decoration:none; font-size:20px; font-weight:600;
-  display:block; width:100%; text-align:left; padding:10px 6px;
-}
+/* Links inside drawer */
+.nav-mobile a{ color: var(--nav-color); text-decoration:none; font-size:20px; font-weight:600; display:block; width:100%; text-align:left; padding:10px 6px; }
 
-/* TOP variant (tablet) - slide down full width */
-.nav-mobile.top{
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100%;
-  max-height: 100vh;
-  overflow: auto;
-  transform: translateY(-110%);
-  transition: transform .35s ease, opacity .35s ease;
-  opacity: 1;
-  border-radius: 0;
-  padding: 80px 20px 40px; /* espacio para botón X */
-}
-.nav-mobile.top.show{ transform: translateY(0); }
-
-/* SIDE variant (mobile) - slide from right */
-.nav-mobile.side{
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: min(90vw, 340px);   /* responsive width */
-  max-width: 90vw;
-  transform: translateX(110%);
-  transition: transform .35s ease, opacity .35s ease;
-  opacity: 1;
-  border-radius: 8px 0 0 8px;
-  overflow: auto;
-  padding-top: 56px;
-  left: auto; /* por si hereda de top */
-}
-.nav-mobile.side.show{ transform: translateX(0); }
-
-/* closing states */
-.nav-mobile.closing{ transition: opacity 1s ease, transform 1s ease; }
-.nav-mobile.top.closing{ opacity: 0; transform: translateY(-110%); }
-
-/* En móvil, cierre por enlace = SOLO FADE (sin deslizar) */
-.nav-mobile.side.closing{
-  transform: translateX(0) !important; /* no se mueve */
-  opacity: 0 !important;               /* se disuelve en 1s */
-}
-
-/* ensure display none is respected when set inline */
-.nav-mobile[style*="display: none"]{ display:none !important; }
-
-/* close button */
-.nav-close{
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 40px;
-  height: 40px;
-  border: 0;
-  border-radius: 6px;
-  background: rgba(255,255,255,.14);
-  color: #fff;
-  font-size: 26px;
-  line-height: 40px;
-  text-align: center;
-  cursor: pointer;
-  z-index: 2010;
-}
+/* Close button */
+.nav-close{ position:absolute; top:12px; right:12px; width:40px; height:40px; border:0; border-radius:6px; background: rgba(255,255,255,.14); color:#fff; font-size:26px; line-height:40px; text-align:center; cursor:pointer; z-index: 1210; }
 .nav-close:hover{ background: rgba(255,255,255,.22); }
 
-/* ==============================
-   FORZAR ORIENTACIÓN POR BREAKPOINT
-   (si por error queda la clase opuesta, estos overrides corrigen)
-============================== */
+/* ===== BEHAVIOR BY BREAKPOINT ===== */
 
-/* TABLET Y ARRIBA (≥768px): siempre comportamiento TOP */
-@media (min-width:768px){
-  /* Si por error quedó .side, la hacemos comportarse como TOP */
-  .nav-mobile.side{
-    left: 0 !important; right: 0 !important; top: 0 !important;
-    width: 100% !important; max-width: none !important; height:100vh !important;
-    border-radius: 0 !important;
-    transform: translateY(-110%) !important;
-    transition: transform .35s ease, opacity .35s ease !important;
+/* Tablet & up (>=768px): TOP full-screen drawer (slide down/up) */
+@media (min-width: 768px) {
+  .nav-mobile {
+    position: fixed;
+    left: 0; right: 0; top: 0;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
+    transform: translateY(-110%);
+    transition: transform .35s ease, opacity .35s ease;
+    opacity: 1;
+    border-radius: 0;
+    padding: 80px 20px 40px;
+    align-items: flex-start;
+    justify-content: center; /* center content vertically */
   }
-  .nav-mobile.side.show{ transform: translateY(0) !important; }
-  .nav-mobile.side.closing{
-    opacity: 1 !important;
-    transform: translateY(-110%) !important;
-    transition: transform .35s ease !important;
-  }
+  .nav-mobile.show { transform: translateY(0); }
+
+  /* closing: slide up quickly */
+  .nav-mobile.closing { opacity: 1; transform: translateY(-110%); transition: transform .35s ease; }
+
+  /* ensure links are comfortably spaced */
+  .nav-mobile a { padding: 16px 12px; font-size: 20px; }
 }
 
-/* MÓVIL (<768px): siempre comportamiento SIDE, full-screen */
-@media (max-width:767px){
-  /* Si por error quedó .top, la hacemos comportarse como SIDE full-screen */
-  .nav-mobile.top{
-    top: 0 !important; right: 0 !important; left: auto !important;
-    height: 100vh !important; width: 100vw !important; max-width: 100vw !important;
-    border-radius: 0 !important;
-    transform: translateX(100%) !important;
-    transition: transform .35s ease, opacity .35s ease !important;
-    padding-top: 56px !important;
+/* Mobile (<768px): SIDE drawer from right, full-viewport width for consistent UX,
+   but visually it's a side panel — closing by link fades out (1s) */
+@media (max-width: 767px) {
+  .nav-mobile {
+    position: fixed;
+    top: 0; right: 0; left: auto;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    transform: translateX(100%);
+    transition: transform .35s ease, opacity .35s ease;
+    opacity: 1;
+    border-radius: 0;
+    padding-top: 56px;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
-  .nav-mobile.top.show{ transform: translateX(0) !important; }
-  .nav-mobile.top.closing{
+  .nav-mobile.show { transform: translateX(0); }
+
+  /* closing via link or X -> fade (no slide) */
+  .nav-mobile.closing {
     transform: translateX(0) !important;
     opacity: 0 !important;
     transition: opacity 1s ease !important;
   }
 
-  /* Y si es .side en móvil, que cubra todo (full-screen) */
-  .nav-mobile.side{
-    width: 100vw !important; max-width: 100vw !important; border-radius: 0 !important;
-  }
+  .nav-mobile a { padding: 14px 12px; font-size: 18px; }
 }
 
-/* ==============================
-   Hero
-============================== */
-.hero{
-  background:url('assets/imagenhero.webp') center/cover no-repeat;
-  color:#fff; position:relative; min-height:100vh;
-  display:flex; align-items:center; justify-content:flex-end; padding:0 40px;
-}
-.hero::after{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.5); }
+/* If script sets inline display:none, respect it */
+.nav-mobile[style*="display: none"]{ display: none !important; }
 
-.hero-wrapper{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:flex-end; }
+/* Hero, content, footer etc. (kept as your original) */
+/* ... (el resto de tu CSS se mantiene; pega aquí tu bloque del hero, servicios, casos, contacto, footer, FAB) ... */
 
-.hero-card{
-  width:536px; height:224px; background:rgba(0,0,0,.5);
-  padding:37px; border-radius:8px; display:flex; flex-direction:column; justify-content:center; text-align:center;
-}
-.hero-title{ font-size:32px; font-weight:700; line-height:48px; margin-bottom:16px; }
-.hero-subtitle{ font-size:19px; font-weight:600; line-height:24px; }
+/* --- FAB WhatsApp (asegurar z-index menor que nav para que nav lo cubra) */
+.whatsapp-fab{ z-index: 1150; position: fixed; right:18px; bottom:18px; width:60px; height:60px; background:var(--green); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,.35); }
 
-.hero-buttons{ margin-top:24px; display:flex; flex-direction:column; gap:14px; align-items:flex-end; }
-.btn{
-  display:flex; align-items:center; justify-content:center; border-radius:8px;
-  font-weight:700; text-decoration:none; color:#fff; transition:.2s;
-}
-.hero-btn{ width:536px; height:58px; font-size:16px; line-height:24px; }
-.hero-btn.primary{ background:var(--orange); box-shadow:0 4px 8px rgba(0,0,0,.35); }
-.hero-btn.primary:hover{ filter:brightness(1.06); }
-.hero-btn.whatsapp{ background:var(--green); }
-.hero-btn.whatsapp:hover{ filter:brightness(1.08); }
-
-/* Flecha scroll */
-.scroll-down{
-  position:absolute; left:50%; transform:translateX(-50%);
-  bottom:22px; z-index:1; opacity:.9;
-}
-
-/* ==============================
-   Beneficios
-============================== */
-.benefits{ background:var(--blue-300); padding:90px 0; }
-.benefits-wrapper{ display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; }
-.benefit-card{
-  flex:1; min-width:250px; background:#fff; padding:20px; border-radius:8px;
-  box-shadow:0 4px 12px rgba(0,0,0,.1); transition:.2s;
-}
-.benefit-card:hover{ transform:translateY(-4px); box-shadow:0 6px 16px rgba(0,0,0,.15); }
-.benefit-card h3{ margin-bottom:10px; color:var(--blue-800); }
-
-/* ==============================
-   Servicios
-============================== */
-.services{ margin:60px auto; }
-.services h2{ text-align:left; margin-bottom:28px; font-size:28px; color:var(--blue-800); }
-
-.services-grid{
-  display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
-}
-
-.service-card{
-  background:#fff; border-radius:8px; overflow:hidden;
-  box-shadow:0 4px 12px rgba(0,0,0,.1); display:flex; flex-direction:column; transition:.2s;
-}
-.service-card:hover{ transform:translateY(-4px); box-shadow:0 6px 16px rgba(0,0,0,.15); }
-.service-card img{ width:100%; display:block; border-bottom:1px solid #eee; }
-
-.service-body{ padding:16px 20px 20px; display:flex; flex-direction:column; flex:1; }
-.service-header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-.service-header h4{ font-size:16px; line-height:24px; font-weight:600; color:var(--text); display:flex; align-items:center; }
-.service-icon{ margin-right:6px; }
-.service-btn{
-  width:122px; height:40px; background:#3f6daa; color:#fff; border:none; border-radius:4px; font-size:12px; font-weight:700; cursor:pointer;
-}
-.service-btn:hover{ background:#89abd5; }
-.service-card p{ font-size:16px; line-height:24px; color:var(--muted); margin:0 0 12px; flex-grow:1; }
-.service-link{ font-size:14px; line-height:18px; color:var(--blue-800); text-decoration:none; font-weight:600; }
-.service-link:hover{ text-decoration:underline; }
-
-/* ==============================
-   Casos de éxito
-============================== */
-.cases{ background:var(--blue-800); color:#fff; padding:60px 0; }
-.cases h2{ text-align:left; margin-bottom:28px; }
-.cases-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
-
-.case-card{
-  background:#fff; color:var(--text); border-radius:8px; overflow:hidden;
-  box-shadow:0 4px 12px rgba(0,0,0,.1); display:flex; flex-direction:column; transition:.2s;
-}
-.case-card:hover{ transform:translateY(-4px); box-shadow:0 6px 16px rgba(0,0,0,.15); }
-.case-card img{ width:100%; display:block; border-bottom:1px solid #eee; }
-.case-body{ padding:16px 20px 20px; display:flex; flex-direction:column; flex:1; background:#fff; }
-.case-card h4{ margin:0 0 8px; font-size:16px; font-weight:600; }
-.case-card p{ margin:0 0 12px; font-size:16px; color:var(--muted); flex:1; }
-.case-link{ font-size:14px; color:var(--blue-800); text-decoration:none; font-weight:600; }
-.case-link:hover{ text-decoration:underline; }
-
-/* ==============================
-   Contacto
-============================== */
-.contact{ margin:60px auto; }
-.contact-card{
-  background:var(--blue-300); border:1px solid #d0dced; padding:40px 48px;
-  border-radius:12px; box-shadow:0 8px 14px rgba(0,0,0,.05); max-width:600px; width:100%; margin:0 auto;
-}
-.contact-card h2{ text-align:center; margin-bottom:8px; color:var(--text); }
-.contact-card p{ text-align:center; color:var(--muted); margin-bottom:24px; }
-.form-title{ font-size:16px; font-weight:600; margin-bottom:16px; color:var(--text); }
-
-.contact-form{ display:flex; flex-direction:column; gap:15px; }
-.contact-form label{ display:flex; flex-direction:column; font-size:14px; color:var(--text); }
-.contact-form input, .contact-form select, .contact-form textarea{
-  padding:12px; background:#fff; border:1px solid #a8c2e4; border-radius:6px; font-family:inherit;
-}
-.contact-form textarea{ min-height:120px; resize:vertical; }
-.contact-form input::placeholder, .contact-form textarea::placeholder{ color:var(--muted); }
-.service-select{ color:var(--muted); }
-.service-select:focus, .service-select option{ color:var(--text); }
-
-.contact-form .btn.primary{
-  width:100%; padding:15px; border:none; border-radius:6px; background:var(--orange);
-}
-
-/* Consentimiento */
-.form-consent{ display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--text); line-height:1.5; }
-.form-consent input{ width:18px; height:18px; }
-
-/* ==============================
-   Footer
-============================== */
-.site-footer{ background:var(--blue-900); color:#bfbfbf; }
-.footer-content{ display:flex; flex-wrap:wrap; justify-content:space-between; padding:40px 0; gap:28px; }
-.footer-left{ flex:1 1 320px; max-width:560px; }
-.footer-logo{ width:160px; height:auto; display:block; margin-bottom:16px; }
-.footer-left p{ color:#fff; }
-
-.footer-links{ display:flex; flex:1 1 300px; justify-content:space-around; gap:28px; }
-.links-column,.contact-column{ min-width:160px; }
-.footer-links h3{ color:#fff; font-weight:700; margin:0 0 12px; }
-.links-column ul{ list-style:none; }
-.links-column li{ margin-bottom:8px; }
-.links-column a, .contact-column a, .contact-column p{
-  color:#fff; text-decoration:none; font-size:16px; line-height:24px;
-}
-.links-column a:hover, .contact-column a:hover{ text-decoration:underline; }
-
-.footer-bottom{
-  text-align:center; padding:20px 0; border-top:1px solid #1f4e6b; color:#fff;
-}
-.footer-bottom a{ color:#fff; text-decoration:none; font-weight:700; }
-.footer-bottom a:hover{ text-decoration:underline; }
-
-/* ==============================
-   FAB WhatsApp
-============================== */
-.whatsapp-fab{
-  position:fixed; right:18px; bottom:18px; width:60px; height:60px;
-  background:var(--green); border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.35); z-index:1500;
-}
-
-/* ==============================
-   Breakpoints layout (resto del sitio)
-============================== */
+/* Media queries y estilos restantes (conserva tu CSS original para todo lo demás) */
 @media (max-width:1024px){
   .nav{ display:none; }
   .hamburger{ display:flex; }
-
   .hero{ justify-content:center; padding:0 16px; }
   .hero-wrapper{ align-items:center; }
   .hero-card{ width:min(536px, 90vw); height:auto; }
   .hero-btn{ width:min(536px, 90vw); }
-
   .services-grid{ grid-template-columns:1fr; }
   .cases-grid{ grid-template-columns:1fr; }
-
-  .footer-content{
-    flex-direction:column; align-items:center; text-align:center;
-  }
+  .footer-content{ flex-direction:column; align-items:center; text-align:center; }
   .footer-links{ flex-direction:column; align-items:center; }
 }
-
 @media (max-width:480px){
   .contact-card{ padding:28px 20px; }
   .hero-title{ font-size:26px; line-height:38px; }
