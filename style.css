@@ -22,6 +22,9 @@ body{
   background:var(--white);
 }
 
+/* utility: lock scroll when nav open */
+html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
+
 .container{ width:90%; max-width:1200px; margin:0 auto; }
 
 /* ==============================
@@ -58,42 +61,107 @@ body{
 .hamburger.open span:nth-child(2){ opacity:0; }
 .hamburger.open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
 
-/* Panel móvil: desliza DESDE ARRIBA */
+/* ==============================
+   Overlay + Side Drawer (right -> center)
+   Mobile: full-screen
+   Tablet: partial width (~60% or up to 720px)
+   Close: fade out 1s (no slide back)
+============================== */
+
+/* overlay (under the drawer, above content) */
+#nav-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease;
+  z-index: 1090; /* under drawer (1100) */
+}
+#nav-overlay.visible { opacity: 1; visibility: visible; }
+
+/* drawer base */
 .nav-mobile{
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;               /* mobile default: full width */
+  max-width: 100vw;
   background: var(--blue-800);
-  display: flex; flex-direction: column; align-items: center;
-  gap: 30px;
-  padding: 80px 20px 40px; /* espacio para el botón X arriba */
-  transform: translateY(-110%);
-  transition: transform .35s ease-in-out;
-  z-index: 2001;                 /* sobre el header */
-  height: auto;
-  box-shadow: 0 8px 28px rgba(0,0,0,.35);
+  color: #fafafa;
+  z-index: 1100;              /* above overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 56px 20px 40px;
+  box-sizing: border-box;
+  transform: translateX(100%); /* hidden by default (off-screen to the right) */
+  transition: transform .35s cubic-bezier(.2,.9,.2,1), opacity .35s ease;
+  opacity: 1;
+  overflow: auto;
+  border-radius: 0;
+  will-change: transform, opacity;
 }
-.nav-mobile.show{ transform: translateY(0); }
 
+/* show: slide in from right (both mobile & tablet) */
+.nav-mobile.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* closing: DO NOT SLIDE BACK. Keep transform at 0 and fade opacity to 0 (1s) */
+.nav-mobile.closing {
+  transform: translateX(0) !important;
+  opacity: 0 !important;
+  transition: opacity 1s ease !important;
+}
+
+/* neutralize any previous top variant if present */
+.nav-mobile.top {
+  transform: translateX(100%) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+}
+
+/* links inside drawer */
+.nav-mobile a{
+  color:#fafafa; text-decoration:none; font-size:20px; font-weight:600;
+  display:block; width:100%; text-align:left; padding:14px 12px;
+}
+
+/* close button */
 .nav-close{
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 12px;
+  right: 12px;
   width: 40px;
   height: 40px;
   border: 0;
-  border-radius: 50%;
+  border-radius: 6px;
   background: rgba(255,255,255,.14);
   color: #fff;
   font-size: 26px;
   line-height: 40px;
   text-align: center;
   cursor: pointer;
+  z-index: 1110; /* above drawer content */
 }
 .nav-close:hover{ background: rgba(255,255,255,.22); }
 
-.nav-mobile a{
-  color:#fff; text-decoration:none; font-size:20px; font-weight:600;
+/* Tablet: partial width (approx 60% or up to 720px) */
+@media (min-width: 768px) {
+  .nav-mobile {
+    width: min(60vw, 720px);
+    max-width: 720px;
+    right: 0;
+    border-radius: 0 8px 8px 0;
+    padding-top: 36px;
+  }
 }
+
+/* Respect inline display:none if script sets it */
+.nav-mobile[style*="display: none"]{ display:none !important; }
 
 /* ==============================
    Hero
@@ -248,12 +316,13 @@ body{
 
 /* ==============================
    FAB WhatsApp
+   (z-index debajo del drawer para que el drawer lo cubra)
 ============================== */
 .whatsapp-fab{
   position:fixed; right:18px; bottom:18px; width:60px; height:60px;
   background:var(--green); border-radius:50%;
   display:flex; align-items:center; justify-content:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.35); z-index:1500;
+  box-shadow:0 8px 24px rgba(0,0,0,.35); z-index:1050;
 }
 
 /* ==============================
