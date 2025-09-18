@@ -1,159 +1,128 @@
-/* main.js - drawer control (tablet top / mobile side, fade-on-close mobile) */
+// Responsive drawer (top on tablet, side on mobile) + overlay + fade 1s on link click
 (() => {
-  const SELECTORS = {
-    hamburger: '#hamburger',
-    nav: '#nav-mobile',
-    close: '#nav-close',
-    overlay: '#nav-overlay'
-  };
+  const init = () => {
+    const hamburger = document.getElementById("hamburger");
+    const navMobile = document.getElementById("nav-mobile");
+    const navClose  = document.getElementById("nav-close");
+    if (!hamburger || !navMobile) return;
 
-  const qs = (sel) => document.querySelector(sel);
-
-  const hamburger = qs(SELECTORS.hamburger);
-  const nav = qs(SELECTORS.nav);
-  const closeBtn = qs(SELECTORS.close);
-  let overlay = qs(SELECTORS.overlay);
-
-  if (!nav || !hamburger) return;
-
-  // create overlay if missing
-  if (!overlay) {
-    overlay = document.createElement('div');
-    overlay.id = 'nav-overlay';
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(overlay);
-  }
-
-  // breakpoint test: mobile if width < 768
-  const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
-
-  // ensure nav has initial class according to current device
-  const applyVariantClass = () => {
-    nav.classList.remove('top', 'side', 'show', 'closing');
-    if (isMobile()) {
-      nav.classList.add('side');
-    } else {
-      nav.classList.add('top');
+    // create overlay once
+    let overlay = document.getElementById('nav-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'nav-overlay';
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(overlay);
     }
-    // keep it hidden initially (transforms control visibility)
-    nav.setAttribute('aria-hidden', 'true');
-  };
 
-  applyVariantClass();
+    const firstLink = navMobile.querySelector("a");
+    const isMobile = () => window.matchMedia("(max-width:767px)").matches;
+    let closeTimeout = null;
 
-  // open menu
-  const openMenu = () => {
-    if (nav._closingTimer) { clearTimeout(nav._closingTimer); nav._closingTimer = null; }
-    nav.classList.remove('closing');
-    overlay.classList.add('visible');
-    document.documentElement.classList.add('nav-lock');
-    nav.classList.add('show');
-    hamburger.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    nav.setAttribute('aria-hidden', 'false');
+    const applyOrientation = () => {
+      const mobile = isMobile();
+      navMobile.classList.toggle('side', mobile);
+      navMobile.classList.toggle('top', !mobile);
+    };
 
-    // focus first link
-    const first = nav.querySelector('a,button');
-    first && first.focus({ preventScroll: true });
-  };
+    const openMenu = () => {
+      applyOrientation();
+      // cancel any closing animation
+      if (closeTimeout) { clearTimeout(closeTimeout); closeTimeout = null; navMobile.classList.remove('closing'); }
+      // show overlay + lock body
+      overlay.classList.add('visible');
+      document.documentElement.classList.add('nav-lock');
+      // show nav
+      navMobile.style.display = 'block';
+      void navMobile.offsetWidth; // force reflow
+      navMobile.classList.add('show'); // triggers CSS transform
+      hamburger.classList.add('open');
+      hamburger.setAttribute("aria-expanded", "true");
+      navMobile.setAttribute("aria-hidden", "false");
+      if (firstLink) firstLink.focus({ preventScroll: true });
+    };
 
-  // hide helper: remove overlay & scroll lock
-  const finalizeHide = () => {
-    overlay.classList.remove('visible');
-    document.documentElement.classList.remove('nav-lock');
-  };
+    const hideNavCompletely = () => {
+      navMobile.style.display = 'none';
+      overlay.classList.remove('visible');
+      document.documentElement.classList.remove('nav-lock');
+    };
 
-  // close menu with behavior depending on device
-  const closeMenu = () => {
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    nav.setAttribute('aria-hidden', 'true');
+    const closeMenu = (opts = {}) => {
+      const mobile = isMobile();
+      const fromLink = !!opts.fromLink;
+      // remove show state
+      navMobile.classList.remove('show');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute("aria-expanded", "false");
+      navMobile.setAttribute("aria-hidden", "true");
 
-    if (isMobile()) {
-      // mobile: fade out (nav stays at X=0) for 1s
-      nav.classList.add('closing');
-      // after fade remove show and closing
-      nav._closingTimer = setTimeout(() => {
-        nav.classList.remove('show', 'closing');
-        finalizeHide();
-        hamburger.focus({ preventScroll: true });
-        nav._closingTimer = null;
-      }, 1000);
-    } else {
-      // tablet: slide up (remove .show => translateY negative)
-      nav.classList.remove('show');
-      // wait transition end (approx 350ms) then cleanup
-      nav._closingTimer = setTimeout(() => {
-        finalizeHide();
-        hamburger.focus({ preventScroll: true });
-        nav._closingTimer = null;
-      }, 350);
-    }
-  };
+      if (fromLink && mobile) {
+        // fade & slide out 1s
+        navMobile.classList.add('closing');
+        overlay.classList.remove('visible'); // overlay hides faster (no fade necessary)
+        closeTimeout = setTimeout(() => { navMobile.classList.remove('closing'); hideNavCompletely(); closeTimeout = null; hamburger.focus({ preventScroll:true }); }, 1000);
+      } else {
+        // quick close, matches .35s transition
+        closeTimeout = setTimeout(() => { hideNavCompletely(); closeTimeout = null; hamburger.focus({ preventScroll:true }); }, 350);
+      }
+    };
 
-  // toggle
-  hamburger.addEventListener('click', (e) => {
-    e.preventDefault();
-    nav.classList.contains('show') ? closeMenu() : openMenu();
-  });
+    // initial attributes and classes
+    hamburger.setAttribute("aria-expanded", "false");
+    if (!navMobile.hasAttribute("aria-hidden")) navMobile.setAttribute("aria-hidden", "true");
+    if (getComputedStyle(navMobile).display === "none") navMobile.style.display = "none";
+    applyOrientation();
 
-  // close btn
-  if (closeBtn) closeBtn.addEventListener('click', (e) => { e.preventDefault(); closeMenu(); });
+    // interactions
+    hamburger.addEventListener("click", (e) => { e.preventDefault(); navMobile.classList.contains('show') ? closeMenu() : openMenu(); });
+    if (navClose) navClose.addEventListener("click", (e)=>{ e.preventDefault(); closeMenu(); });
 
-  // overlay click closes
-  overlay.addEventListener('click', (e) => { closeMenu(); });
+    // clicking overlay closes menu
+    overlay.addEventListener('click', closeMenu);
 
-  // handle link clicks: close first, then navigate (anchors = smooth scroll)
-  nav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href') || '';
-      const isHash = href.startsWith('#') && href.length > 1;
-      // prevent double-navigations, close then navigate after delay
-      e.preventDefault();
-      closeMenu();
+    // links: if clicked, close (fade on mobile) and then navigate/scroll after delay
+    navMobile.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href") || "";
+        const mobile = isMobile();
+        const isHash = href.startsWith("#");
+        const isExternal = /^(https?:)?\/\//i.test(href) && !href.startsWith(location.origin) && !href.startsWith('/');
 
-      const delay = isMobile() ? 1000 : 350;
-      setTimeout(() => {
-        if (isHash) {
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-            // update hash without adding history entry
-            history.replaceState(null, '', href);
-          } else {
-            // fallback: set location
-            location.hash = href;
-          }
-        } else {
-          // external or regular link
-          location.href = a.href;
+        if (!isHash && isExternal) {
+          // external: close quickly and let browser handle navigation
+          closeMenu({ fromLink: false });
+          return;
         }
-      }, delay);
+
+        // prevent immediate navigation so we can animate close
+        e.preventDefault();
+        closeMenu({ fromLink: mobile });
+        const delay = mobile ? 1000 : 350;
+        setTimeout(() => {
+          if (isHash) {
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: "smooth" });
+            history.replaceState(null, "", href);
+          } else {
+            window.location.href = a.href;
+          }
+        }, delay);
+      });
     });
-  });
 
-  // keep variant class in sync on resize (debounced)
-  let rto = null;
-  window.addEventListener('resize', () => {
-    if (rto) clearTimeout(rto);
-    rto = setTimeout(() => {
-      // if variant changed, reapply classes and close menu
-      const currentIsMobile = nav.classList.contains('side');
-      if (isMobile() && !currentIsMobile) {
-        // switched to mobile
-        nav.classList.remove('top'); nav.classList.add('side');
-      } else if (!isMobile() && currentIsMobile) {
-        // switched to tablet/desktop
-        nav.classList.remove('side'); nav.classList.add('top');
-      }
-      // if open and passed desktop breakpoint, ensure no stuck closing state
-      if (!nav.classList.contains('show')) {
-        nav.classList.remove('closing');
-      }
-    }, 120);
-  });
+    // escape to close
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && navMobile.classList.contains("show")) { e.preventDefault(); closeMenu(); }
+    });
 
-  // accessibility defaults
-  hamburger.setAttribute('aria-expanded', 'false');
-  if (!nav.hasAttribute('aria-hidden')) nav.setAttribute('aria-hidden', 'true');
+    // on resize re-apply orientation and close on desktop
+    const BREAK_DESK = 1024;
+    window.addEventListener("resize", () => {
+      applyOrientation();
+      if (window.innerWidth > BREAK_DESK && navMobile.classList.contains("show")) closeMenu();
+    });
+  };
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
