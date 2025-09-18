@@ -15,7 +15,7 @@
 
   /* nav colors */
   --nav-bg: var(--blue-800);
-  --nav-color: #ffffff;
+  --nav-color: #fafafa;
 }
 
 html,body{ height:100%; }
