@@ -259,3 +259,65 @@
 
 })(); // end branding
 
+/* === Full Ice · Back to top (mobile/tablet) — persisted === */
+(function initFiBackToTop(){
+  if (document.getElementById('fi-backtotop')) return;
+
+  // Create button
+  const btn = document.createElement('button');
+  btn.id = 'fi-backtotop';
+  btn.type = 'button';
+  btn.setAttribute('aria-label','Volver al inicio');
+  btn.title = 'Subir al inicio';
+  btn.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M6 15l6-6 6 6"/>
+    </svg>
+  `;
+  document.body.appendChild(btn);
+
+  const adjustPositionAboveWhats = () => {
+    const candidate = document.querySelector('[id*="whats" i], [class*="whats" i], .whatsapp, .whats-fab, .whatsapp-fab, .whatsapp-button, .floating-whatsapp');
+    if (candidate) {
+      try {
+        const r = candidate.getBoundingClientRect();
+        const bottom = Math.max(56, Math.round(window.innerHeight - r.top + 12));
+        btn.style.bottom = bottom + 'px';
+        return;
+      } catch(e){}
+    }
+    btn.style.bottom = '88px';
+  };
+
+  const onScroll = () => {
+    const y = window.scrollY || window.pageYOffset;
+    if (y > 200) {
+      btn.classList.add('show'); btn.classList.remove('hide');
+    } else {
+      btn.classList.remove('show'); btn.classList.add('hide');
+    }
+  };
+
+  const scrollToTop = (e) => {
+    e && e.preventDefault();
+    try {
+      const nav = document.getElementById('nav-mobile');
+      if (nav && nav.classList.contains('show') && nav.__fi && typeof nav.__fi.closeMenu === 'function') {
+        nav.__fi.closeMenu();
+      }
+    } catch(e){}
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  };
+
+  btn.addEventListener('click', scrollToTop);
+  btn.addEventListener('keydown', (ev) => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); scrollToTop(); } });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { adjustPositionAboveWhats(); onScroll(); }, { passive: true });
+
+  adjustPositionAboveWhats();
+  setTimeout(adjustPositionAboveWhats, 600);
+  setTimeout(onScroll, 80);
+})();
