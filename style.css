@@ -353,3 +353,65 @@ html.nav-lock, body.nav-lock { overflow: hidden; height: 100%; }
   .hero-title{ font-size:26px; line-height:38px; }
   .hero-subtitle{ font-size:17px; }
 }
+
+/* === Full Ice · Drawer Mobile/Tablet (branding + spacing + icons) === */
+nav#nav-mobile{
+  color:#FAFAFA;
+  font-family: Roboto, system-ui, Segoe UI, Arial, sans-serif;
+  --fi-left: 32px;   /* rail izquierdo */
+  --fi-gap-y: 6px;   /* separación vertical entre items */
+  --fi-top-gap: 8px; /* respiro arriba de la lista */
+}
+
+/* Brand superior (clona el logo del header) */
+nav#nav-mobile .fi-nav-brand{
+  display:flex; align-items:center;
+  padding:16px var(--fi-left) 12px var(--fi-left);
+  border-bottom:1px solid rgba(255,255,255,.35);
+}
+nav#nav-mobile .fi-nav-brand img,
+nav#nav-mobile .fi-nav-brand svg{
+  height:48px; max-width:260px;
+}
+
+/* Lista de enlaces con rail izquierdo */
+nav#nav-mobile .fi-links{ padding: var(--fi-top-gap) 16px 10px var(--fi-left); }
+nav#nav-mobile .fi-links a{
+  display:flex; align-items:center; gap:.75rem;
+  color:#FAFAFA; text-decoration:none;
+  margin: var(--fi-gap-y) 0; padding:12px 10px;
+  border-radius:8px;
+}
+nav#nav-mobile .fi-links a:hover{ background:rgba(255,255,255,.06); }
+
+/* Iconos: círculo azul + glifo */
+nav#nav-mobile .fi-ico{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:26px; height:26px; flex:0 0 26px;
+  border-radius:9999px; background:#3F6DAA;
+}
+nav#nav-mobile .fi-ico svg{ width:16px; height:16px; stroke:#fff; fill:none; stroke-width:2; }
+nav#nav-mobile .fi-ico img{ width:16px; height:16px; object-fit:contain; }
+
+/* Sello inferior (imagotipo + texto en línea) */
+nav#nav-mobile .fi-nav-sign{
+  display:flex; align-items:center; gap:.75rem;
+  padding:12px var(--fi-left) 16px var(--fi-left);
+  border-top:1px solid rgba(255,255,255,.35);
+}
+nav#nav-mobile .fi-nav-sign img{ height:48px; width:auto; }
+nav#nav-mobile .fi-nav-sign .fi-cap{
+  color:#FAFAFA; font-size:13px; letter-spacing:.04em; font-weight:600; white-space:nowrap;
+}
+
+/* Tablet */
+@media (min-width:768px){
+  nav#nav-mobile{ --fi-left:36px; }
+  nav#nav-mobile .fi-nav-brand img,
+  nav#nav-mobile .fi-nav-brand svg{ height:56px; max-width:300px; }
+  nav#nav-mobile .fi-ico{ width:28px; height:28px; flex-basis:28px; }
+  nav#nav-mobile .fi-ico svg,
+  nav#nav-mobile .fi-ico img{ width:18px; height:18px; }
+  nav#nav-mobile .fi-nav-sign img{ height:56px; }
+  nav#nav-mobile .fi-nav-sign .fi-cap{ font-size:13.5px; }
+}
