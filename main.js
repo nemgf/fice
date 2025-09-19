@@ -1,4 +1,4 @@
-/* main.js — Full replacement: Drawer + Link scroll offset + Branding (copy-paste whole file) */
+/* main.js — Full replacement: Drawer + Link scroll offset robusto + Branding (copy-paste whole file) */
 
 /* Drawer lateral (tablet + móvil) con overlay y fade al cerrar */
 (() => {
@@ -8,12 +8,18 @@
     const navClose  = document.getElementById("nav-close");
     if (!hamburger || !navMobile) return;
 
-    // overlay (idempotente)
+    // overlay (idempotente y transparente)
     let overlay = document.getElementById('nav-overlay');
     if (!overlay) {
       overlay = document.createElement('div');
       overlay.id = 'nav-overlay';
       overlay.setAttribute('aria-hidden', 'true');
+      // estilos mínimos (si no están en CSS)
+      overlay.style.position = 'fixed';
+      overlay.style.inset = '0';
+      overlay.style.background = 'transparent'; // dejamos transparente, solo captura clics
+      overlay.style.zIndex = '998';
+      overlay.style.pointerEvents = 'none';
       document.body.appendChild(overlay);
     }
 
@@ -66,7 +72,6 @@
         navMobile.classList.remove('closing');
         hideNavCompletely();
         closeTimeout = null;
-        // return focus to hamburger
         try { hamburger.focus({ preventScroll:true }); } catch(e){}
       }, 1000); // fade out 1s
     };
@@ -97,24 +102,34 @@
           e.preventDefault();
           closeMenu();
 
-          // Esperamos al fade out (1s) y luego hacemos scroll compensado
+          // Esperamos al fade out (1s) y luego hacemos un cálculo robusto y retried del scroll
           setTimeout(() => {
             if (isHash) {
               const target = document.querySelector(href);
-              if (!target) {
-                // no existe target
-                return;
-              }
-              // calcula altura del header (si lo hay)
+              if (!target) return;
+
+              // altura del header (si existe)
               const header = document.querySelector('header');
               const headerH = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
-              const extra = 12; // margen adicional
-              const top = window.pageYOffset + target.getBoundingClientRect().top - headerH - extra;
-              window.scrollTo({ top: Math.max(0, Math.round(top)), behavior: 'smooth' });
+              const extra = 12;
+
+              // función que calcula y hace scroll con seguridad
+              const computeAndScroll = () => {
+                const rect = target.getBoundingClientRect();
+                const absoluteTop = (typeof window.pageYOffset === 'number' ? window.pageYOffset : window.scrollY) + rect.top;
+                const docTop = absoluteTop || (target.offsetTop || 0);
+                const finalTop = Math.max(0, Math.round(docTop - headerH - extra));
+
+                if (Math.abs(window.scrollY - finalTop) <= 2) return;
+                window.scrollTo({ top: finalTop, behavior: 'smooth' });
+              };
+
+              // Ejecutar tras dos rafs (espera al siguiente repaint) y con fallback timeout corto
+              requestAnimationFrame(() => requestAnimationFrame(computeAndScroll));
+              setTimeout(computeAndScroll, 80);
               // actualiza URL sin recargar
               try { history.replaceState(null, "", href); } catch(e){}
             } else {
-              // si no es hash, navegamos
               window.location.href = a.href;
             }
           }, 1000); // coincide con fade
@@ -122,7 +137,7 @@
       });
     };
 
-    // initial attach and also reattach on DOM changes if needed
+    // initial attach and also reattach on resize (in case nav content changes)
     attachLinkHandlers();
 
     // keyboard escape
@@ -133,10 +148,9 @@
       }
     });
 
-    // adjust width on resize
+    // adjust width on resize and reattach handlers if new anchors appear
     window.addEventListener("resize", () => {
       applyWidth();
-      // re-attach possible new links after layout changes
       attachLinkHandlers();
     });
 
@@ -244,3 +258,4 @@
   try { if (nav.__fi && typeof nav.__fi.attachLinkHandlers === 'function') nav.__fi.attachLinkHandlers(); } catch(e){}
 
 })(); // end branding
+
