@@ -60,21 +60,34 @@
     };
 
     const closeMenu = () => {
-      // start fade/close
-      navMobile.classList.remove('show');
-      navMobile.classList.add('closing');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute("aria-expanded", "false");
-      navMobile.setAttribute("aria-hidden", "true");
+  // start fade/close (visual)
+  navMobile.classList.remove('show');
+  navMobile.classList.add('closing');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute("aria-expanded", "false");
 
-      // after fade duration hide for real
-      closeTimeout = setTimeout(() => {
-        navMobile.classList.remove('closing');
-        hideNavCompletely();
-        closeTimeout = null;
-        try { hamburger.focus({ preventScroll:true }); } catch(e){}
-      }, 1000); // fade out 1s
-    };
+  // --- ACCESIBILIDAD: si el foco está dentro del nav, sácalo antes de marcar aria-hidden ---
+  if (navMobile.contains(document.activeElement)) {
+    try {
+      // Intentamos devolver el foco al botón hamburguesa sin scrollear la página
+      hamburger.focus({ preventScroll: true });
+    } catch (err) {
+      // Fallback: desenfocar el elemento actualmente activo
+      try { document.activeElement && document.activeElement.blur(); } catch(e2){}
+    }
+  }
+
+  // Ahora sí podemos marcar aria-hidden = true sin romper la accesibilidad
+  navMobile.setAttribute("aria-hidden", "true");
+
+  // after fade duration hide for real
+  closeTimeout = setTimeout(() => {
+    navMobile.classList.remove('closing');
+    hideNavCompletely();
+    closeTimeout = null;
+    try { hamburger.focus({ preventScroll:true }); } catch(e){}
+  }, 1000); // fade out 1s
+};
 
     // init ARIA and styles idempotent
     hamburger.setAttribute("aria-expanded", "false");
