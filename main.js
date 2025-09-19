@@ -88,15 +88,28 @@
         e.preventDefault();
         closeMenu();
 
+        // Esperamos al fade out (1s) para luego hacer el scroll con offset por header fijo
         setTimeout(() => {
           if (isHash) {
             const target = document.querySelector(href);
-            if (target) target.scrollIntoView({ behavior: "smooth" });
+            if (!target) return; // si no existe no hacemos nada
+
+            // Calcula altura del header (si existe) y aplica margen extra
+            const header = document.querySelector('header');
+            const headerH = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+            const extra = 12; // margen extra para que no quede pegado al header
+
+            // Posición final compensada
+            const top = window.pageYOffset + target.getBoundingClientRect().top - headerH - extra;
+            window.scrollTo({ top: Math.max(0, Math.round(top)), behavior: 'smooth' });
+
+            // Ajusta URL sin recargar
             history.replaceState(null, "", href);
           } else {
+            // Enlaces externos o a otras páginas: navegar normalmente
             window.location.href = a.href;
           }
-        }, 1000); // espera fade out
+        }, 1000); // espera al fade out que ya configuraste
       });
     });
 
